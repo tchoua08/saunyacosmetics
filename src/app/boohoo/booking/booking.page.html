@@ -1,0 +1,77 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <div class="line"></div>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+
+  <div class="main-containt">
+    <div class="scroll-div">
+      <h4 class="title" >Choix de la date</h4>
+      <div class="select-date">
+        <ion-datetime
+          #picker
+          displayFormat="DD MMMM, YYYY"
+          [(ngModel)]="bookDate"
+          min="{{ minYear }}"
+          max="{{ maxYear }}"
+        ></ion-datetime>
+        <ion-icon
+          (click)="picker.open()"
+          class="calendar-icon"
+          src="../../../assets/image/noun_Calendar_2577480.svg"
+        ></ion-icon>
+      </div>
+     <h4 class="title">Sélectionner une place</h4>
+      <ion-row nowrap class="ion-no-padding employee-row">
+        <ion-col
+          size="2"
+          size-md="1"
+          size-xl="0.5"
+          *ngFor="let emp of employeeList"
+          (click)="setEmployee(emp)"
+        >
+          <div
+            class="image-div"
+            [ngClass]="{ active: emp.index == selectedEmployee }"
+          >
+            <img [src]="emp.image" alt="" />
+          </div>
+          <p class="emp-name ion-text-center">{{ emp.name }}</p>
+        </ion-col>
+      </ion-row>
+      <h4 class="title">Disponible</h4>
+      <div class="booking-slot-div">
+        <ion-row>
+          <ion-col
+            [ngClass]="{
+              'no-right-padding': (i + 1) % 4 == 0,
+              'no-left-padding': i == 0 || i % 4 == 0
+            }"
+            size="3"
+            *ngFor="let time of timeSlot; let i = index"
+            (click)="setTimeSlot(time)"
+          >
+            <div class="slot" [ngClass]="{ active: activeTimeSlot == time }">
+              {{ time }}
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-button
+
+        mode="md"
+        expand="full"
+        shape="round"
+        fill="solid"
+        (click)="addPanier()"
+      >
+        Réserver
+      </ion-button>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
+

@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+      <ion-title color="success">Mon profil</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success"
+        defaultHref="/tabs/profil/monprofil"></ion-back-button>
+      </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <div class="contenu">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+
+       <div class="champ">
+        <ion-spinner class="spinner"  *ngIf="start=='oui'" text-center name="crescent" color="primary"></ion-spinner>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+
+          <div class="form-group">
+
+            <ion-input
+              type="text"
+              placeholder="&nbsp;Nom"
+              formControlName="lastName"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+            ></ion-input>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Le nom est requis</div>
+            </div>
+          </div>
+
+        <div class="form-group">
+
+          <ion-input
+            type="text"
+            placeholder="&nbsp;Prénom"
+            formControlName="firstName"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+          ></ion-input>
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Le prénom est requis</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+
+           <ion-input
+             type="text"
+             [readonly]="true"
+             placeholder="&nbsp;Email"
+             formControlName="email"
+             class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+           ></ion-input>
+           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+             <div *ngIf="f.email.errors.required">L'email est requis</div>
+             <div *ngIf="f.email.errors.email">L'email doit être valide</div>
+           </div>
+         </div>
+           <br/>
+          <ion-button type="submit" color="success">
+             Modifier
+          </ion-button>
+
+           </form>
+       </div>
+
+
+  </div>
+</ion-content>

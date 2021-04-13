@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Porte feuille</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success"
+        defaultHref="/tabs/profil/monprofil"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  <div class="banner">
+      <h2>Montant disponible</h2>
+      <h1>268.50 FCFA</h1>
+
+      <div class="btn_box">
+          <ion-row>
+              <ion-col size="6" class="animate__animated animate__flipInX">
+                  <ion-button size="large" shape="round" fill="outline" class="btn" (click)="send_to_bank()">Envoyer</ion-button>
+              </ion-col>
+
+              <ion-col size="6" class="animate__animated animate__flipInX">
+                  <ion-button size="large" shape="round" class="box-shadow btn bg-gradient">Ajouter de l'argent</ion-button>
+              </ion-col>
+          </ion-row>
+      </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+      <h2>Transaction</h2>
+
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/4.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Wonder Spot <span class="end">-70.00</span></h3>
+                  <h4 class="d-flex">
+                      22 Jun, 11:40 am
+                      <span class="end">4 services</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/4.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Opera City Salon <span class="end">-50.00</span></h3>
+                  <h4 class="d-flex">
+                      26 Jun, 02:30 pm
+                      <span class="end">2 services</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+
+
+
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/4.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Opera City Salon <span class="end">-50.00</span></h3>
+                  <h4 class="d-flex">
+                      26 Jun, 02:30 pm
+                      <span class="end">2 services</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/5.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Ultra Unisex <span class="end">-30.00</span></h3>
+                  <h4 class="d-flex">
+                      14 Jun, 10:22 pm
+                      <span class="end">3 services</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+      <ion-item class="money_added animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/ic_pin.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Ajout argent <span class="end">+200.00</span></h3>
+                  <h4 class="d-flex">
+                      22 Jun, 11:40 am
+                      <span class="end">UBA</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+      <ion-item class="animate__animated animate__fadeInUp">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/4.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">Opera City Salon <span class="end">-80.00</span></h3>
+                  <h4 class="d-flex">
+                      26 Jun, 02:30 pm
+                      <span class="end">6 services</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,266 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Panier</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <!-- <ion-button (click)="toggleInfiniteScroll()" expand="block">
+  </ion-button>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        <span class="recap">Récapitulatif</span><br/>
+        <p>de votre commande</p>
+
+      </ion-label>
+      <ion-icon slot="end" name="bag-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        <span class="recap">Réservation</span><br/>
+        <p>Vous n'avez aucune réservation dans votre panier</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>-->
+
+
+    <ion-list>
+      <ion-item *ngFor="let commande of itemsFilter">
+        <ion-row justify-content-between>
+          <ion-col >
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.produit.thumbnail_image)">
+          </ion-col>
+          <ion-col>
+            <ion-row text-wrap>
+              {{commande.produit.name}}
+            </ion-row>
+            <ion-row  text-wrap>
+            <strong>{{commande.prixTotal}} FCFA</strong>
+            </ion-row>
+            <ion-row text-wrap>
+              Qté:{{commande.quantite}}
+            </ion-row>
+            <ion-row text-wrap>
+              <section>
+                <ion-button (click)="showPanier(commande)" color="light">Modifier</ion-button>
+                &nbsp;&nbsp;
+                <ion-button (click)="delGadie(commande.id)" color="light">Effacer</ion-button>
+               </section>
+
+            </ion-row>
+
+
+
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+   <!--<ion-list>
+    <ion-item *ngFor="let commande of itemsFilter" class="ion-text-wrap">
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="2" class="ion-align-self-center">
+            <ion-button color="medium" fill="clear" (click)="decreaseCartItem(commande)">
+              <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="1" class="ion-align-self-center">
+            {{commande.quantite}}
+          </ion-col>
+
+          <ion-col size="2" class="ion-align-self-center">
+            <ion-button color="medium" fill="clear" (click)="increaseCartItem(commande)">
+              <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="2" offset="5">
+            <ion-button color="medium" fill="clear"  (click)="delGadie(commande.id)">
+              <span slot="end">
+                <ion-icon color="danger" name="trash-outline" slot="icon-only"></ion-icon>
+              </span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-thumbnail>
+              <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.produit.thumbnail_image)">
+            </ion-thumbnail>
+          </ion-col>
+          <ion-col >
+            <ion-label class="label" class="ion-text-wrap">
+              <h3>{{commande.produit.name}}</h3>
+            </ion-label>
+          </ion-col>
+          <ion-col  class="ion-text-end">
+         <span class="ion-text-wrap"><br/>
+              {{commande.prixTotal}}FCFA
+        </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+
+  </ion-list>-->
+
+  <ion-list>
+    <ion-item *ngFor="let commande of bookings | async">
+      <ion-row justify-content-between>
+        <ion-col>
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.prestation.thumbnail_image)">
+        </ion-col>
+        <ion-col>
+          <ion-row text-wrap>
+             {{commande.prestation.name}}
+          </ion-row>
+          <ion-row  text-wrap>
+            <strong>{{commande.prestation.unit_price}}</strong> FCFA
+          </ion-row>
+          <ion-row text-wrap>
+            <section>
+              <ion-button (click)="delBooking(commande.id)" color="light">Effacer</ion-button>
+             </section>
+
+          </ion-row>
+
+
+
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+ <!--- <ion-list>
+    <ion-item *ngFor="let commande of bookings | async">
+      <ion-thumbnail slot="start">
+        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.prestation.thumbnail_image)">
+      </ion-thumbnail>
+      <ion-label class="label" class="ion-text-wrap">
+        <h3>{{commande.prestation.name}}</h3>
+
+      </ion-label>
+
+      <ion-label class="label" class="ion-text-wrap">
+        <h3>{{commande.prestation.unit_price}}FCFA</h3>
+      </ion-label>
+
+      <span slot="end">
+
+    <ion-icon (click)="delBooking(commande.id)" color="danger" name="trash-outline" slot="icon-only"></ion-icon>
+
+      </span>
+
+    </ion-item>
+
+  </ion-list>-->
+
+
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer>
+
+   <div *ngIf="voirPanier==='non'">
+
+   <ion-list lines="no">
+     <ion-item>
+        <p class="price">
+          <b>Total commande</b>(hors livraison): *Taxes comprises
+        </p>
+        <p slot="end" class="price">
+          <b>{{somme+sommeub}}FCFA</b>
+        </p>
+     </ion-item>
+   </ion-list>
+
+
+    <ion-grid>
+      <ion-row class="item-stats">
+        <ion-col (click)="btnOpenLivraison()" class="ion-text-center">
+          <ion-button expand="block" color="medium" >
+            LIVRAISONS
+          </ion-button>
+        </ion-col>
+        <ion-col  (click)="btnOpenPaiement()" class="ion-text-center">
+          <ion-button expand="block" color="success" >
+            PAIEMENT
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+   </div>
+
+
+
+
+  <div class="card white-bg ion-margin-top" *ngIf="voirPanier==='oui'">
+    <!--<div class="ion-padding" class="pull-left">
+      &nbsp;&nbsp;&nbsp;Taille:
+    </div>-->
+
+    <div class="border-bottom ion-padding" class="pull-right">
+      <ion-text class="price">
+        {{laCommande.prixTotal}} FCFA
+      </ion-text>
+     <!--<ion-text class="origin-price text-decoration" color="medium">
+
+    </ion-text>-->
+    </div>
+     <br/>
+    <div class="border-bottom ion-padding">
+
+      <div class="input-qty ion-margin-top">
+        <div class="btn">
+          Quantité
+          </div>
+        <span class="btn">
+          <ion-icon (click)="decreaseCartItem()" name="chevron-back-outline"></ion-icon>
+        </span>
+        <input type="text" [value]="quantity">
+        <span class="btn">
+          <ion-icon (click)="increaseCartItem()" name="chevron-forward-outline"></ion-icon>
+        </span>
+        <div class="btn">
+          En Stock
+          </div>
+      </div>
+
+    </div>
+
+    <ion-grid>
+      <ion-row class="item-stats">
+        <ion-col (click)="fermer()" class="ion-text-center">
+          <ion-button expand="block" color="medium" >
+            FERMER
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button (click)="addPanier()" expand="block" color="success" >
+            AJOUTER
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-footer>

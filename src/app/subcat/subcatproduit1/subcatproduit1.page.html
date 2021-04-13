@@ -1,0 +1,312 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+
+  <ion-buttons slot="start">
+      <ion-button color="success" (click)="navService.goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+
+
+    <ion-buttons *ngIf="toggled===false" slot="end">
+      <ion-button icon-only (click)="toggleSearchbar()">
+        <ion-icon color="success" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar color="success"
+    *ngIf="toggled===true"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+
+    <ion-list-header class="catProduit" color="primary" lines="inset">
+      <div class="icon">
+
+        <ion-icon class="pull-left" name="tablet-portrait-outline" (click)="viewGrid('1')" ></ion-icon>
+        <ion-icon class="pull-left" name="grid-outline" (click)="viewGrid('2')" ></ion-icon>
+        <ion-icon class="pull-left" name="apps-outline" (click)="viewGrid('3')" ></ion-icon>
+
+        <ion-buttons class="pull-right">
+          <ion-button class="textbutton" (click)="openAttribute()">
+            Affiner par
+          </ion-button> &nbsp;&nbsp;
+          <ion-button class="textbutton" (click)="presentPopover()">
+            Trier par
+          </ion-button>
+        </ion-buttons>
+
+
+
+
+        <div class="clear"></div>
+      </div>
+    </ion-list-header>
+    </ion-list>
+    <ion-spinner   *ngIf="start==='oui'" text-center name="crescent" color="primary"></ion-spinner>
+
+    <div class="container-view" *ngIf="categories.length>0" [hidden]="(viewType === '2')||(viewType === '3')">
+      <ion-list-header>
+        <ion-label class="titre"> Les catégories</ion-label>
+      </ion-list-header>
+      <ion-card class="card-custom" *ngFor="let uncat of categories">
+        <div (click)="goCategorie(uncat)" class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+uncat.banner + ')'">
+          <div class="card-caption">
+
+          </div>
+        </div>
+
+        <ion-row>
+          <ion-col  class="ion-padding">
+            {{uncat.name}}
+          </ion-col>
+          <ion-col size="auto">
+
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+
+
+
+    <div class="container-view" *ngIf="produitsList.length>0" [hidden]="(viewType === '2')||(viewType === '3')">
+      <ion-list-header>
+        <ion-label class="titre"> Les Produits</ion-label>
+      </ion-list-header>
+      <ion-card class="card-custom" *ngFor="let unproduit of produitsList">
+        <div  (click)="goProduit(unproduit)"  class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+unproduit.thumbnail_image + ')'">
+
+        </div>
+        <div class="card-caption">
+          <ion-fab vertical="bottom" horizontal="start" class="ion-padding">
+            <ion-fab-button>
+              <ion-icon name="heart" color="contrast"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+
+          <ion-fab vertical="bottom" horizontal="end" class="ion-padding">
+            <ion-fab-button (click)="showPanier(unproduit)" color="danger">
+              <ion-icon  name="basket"></ion-icon>
+
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+
+        <ion-row>
+
+          <ion-col class="ion-padding">
+            {{unproduit.name}}
+
+          </ion-col>
+          <ion-col size="auto">
+            <ion-button fill="clear" size="small" color="medium">
+              {{unproduit.unit_price}} FCFA
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+
+        </ion-row>
+      </ion-card>
+    </div>
+
+   <!-- grid 2-->
+
+   <div class="container-view" *ngIf="categories.length>0" [hidden]="(viewType === '1')||(viewType === '3')">
+    <ion-list-header>
+      <ion-label class="titre"> Les catégories</ion-label>
+    </ion-list-header>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let uncat of categories">
+        <ion-card class="card-custom"  >
+          <div (click)="goCategorie(uncat)" class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+uncat.banner + ')'">
+            <div class="card-caption">
+
+            </div>
+          </div>
+          <ion-row>
+            <ion-col  class="ion-padding">
+              {{uncat.name}}
+            </ion-col>
+            <ion-col size="auto">
+
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <div class="container-view" *ngIf="produitsList.length>0" [hidden]="(viewType === '1')||(viewType === '3')">
+    <ion-list-header>
+      <ion-label class="titre"> Les produits</ion-label>
+    </ion-list-header>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let unproduit of produitsList">
+        <ion-card  class="card-custom"  >
+
+
+          <div (click)="goProduit(unproduit)" class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+unproduit.thumbnail_image + ')'">
+          </div>
+          <div class="card-caption">
+
+            <ion-fab vertical="bottom" horizontal="start" class="ion-padding">
+              <ion-fab-button>
+                <ion-icon name="heart" color="contrast"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+
+            <ion-fab vertical="bottom" horizontal="end" class="ion-padding">
+              <ion-fab-button (click)="showPanier(unproduit)" color="danger">
+                <ion-icon  name="basket"></ion-icon>
+
+              </ion-fab-button>
+            </ion-fab>
+          </div>
+          <ion-row>
+            <ion-col class="ion-padding">
+              {{unproduit.name}}
+
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button fill="clear" size="small" color="medium">
+                {{unproduit.unit_price}} FCFA
+              </ion-button>
+            </ion-col>
+
+
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!--grid 3 -->
+
+  <div class="container-view" *ngIf="categories.length>0" [hidden]="(viewType === '1')||(viewType === '2')">
+    <ion-list-header>
+      <ion-label class="titre"> Les catégories</ion-label>
+    </ion-list-header>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" *ngFor="let uncat of categories">
+        <ion-card class="card-custom"  >
+          <div (click)="goCategorie(uncat)" class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+uncat.banner + ')'">
+            <div class="card-caption">
+
+            </div>
+          </div>
+          <ion-row>
+            <ion-col  class="ion-padding">
+              {{uncat.name}}
+            </ion-col>
+            <ion-col size="auto">
+
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <div class="container-view" *ngIf="produitsList.length>0" [hidden]="(viewType === '1')||(viewType === '2')">
+    <ion-list-header>
+      <ion-label class="titre"> Les produits</ion-label>
+    </ion-list-header>
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" *ngFor="let unproduit of produitsList">
+        <ion-card  (click)="goProduit(unproduit)" class="card-custom"  >
+
+
+          <div  class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+unproduit.thumbnail_image + ')'">
+
+            <div class="card-caption">
+
+            </div>
+          </div>
+
+          <ion-row>
+            <ion-col class="ion-padding">
+              {{unproduit.name}}
+
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button fill="clear" size="small" color="medium">
+                {{unproduit.unit_price}} FCFA
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="(categories.length===0)and(produitsList.length===0)">
+    <br/><br/>
+      <ion-list-header>
+        <ion-label class="titre">
+          Aucun produit dans cette categorie
+        </ion-label>
+      </ion-list-header>
+
+    </div>
+
+</ion-content>
+<ion-footer>
+  <div class="card white-bg ion-margin-top" *ngIf="voirPanier==='oui'">
+    <ion-row>
+      <ion-col class="nomproduit">
+        {{nomproduit}}
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button fill="clear" size="small" color="medium">
+          {{prix}} FCFA
+        </ion-button>
+      </ion-col>
+
+
+    </ion-row>
+     <br/>
+    <div class="border-bottom ion-padding">
+
+      <div class="input-qty ion-margin-top" >
+        <div class="btn">
+          Quantité
+          </div>
+        <span class="btn">
+          <ion-icon (click)="decreaseCartItem()" name="chevron-back-outline" color="medium"></ion-icon>
+        </span>
+        <input type="text" readonly [value]="quantity">
+        <span class="btn">
+          <ion-icon (click)="increaseCartItem()" name="chevron-forward-outline" color="medium"></ion-icon>
+        </span>
+        <div class="btn">
+          En Stock
+          </div>
+      </div>
+
+    </div>
+
+    <ion-grid>
+      <ion-row class="item-stats">
+        <ion-col (click)="fermer()" class="ion-text-center">
+          <ion-button expand="block" color="medium" >
+            FERMER
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button (click)="addPanier()" expand="block" color="success" >
+            AJOUTER
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-footer>

@@ -1,0 +1,49 @@
+<ion-content class="ion-padding tab-attribute">
+  <!--select attributes-->
+  <ion-list lines="none">
+
+    <ion-item>
+      <ion-label>Prix</ion-label>
+      <ion-select (ionChange)="onSelectChange($event)">
+        <ion-select-option value="100-500">100-500 FCFA</ion-select-option>
+        <ion-select-option value="500-1000">
+          500-1000 FCFA
+        </ion-select-option>
+        <ion-select-option value="1000-1500">
+          1000-1500 FCFA
+        </ion-select-option>
+        <ion-select-option value="2000-2500">
+          2000-2500 FCFA
+        </ion-select-option>
+        <ion-select-option value="3000-3500">
+          3000-3500 FCFA
+        </ion-select-option>
+        <ion-select-option value="4000-4500">
+          4000-4500 FCFA
+        </ion-select-option>
+        <ion-select-option value="5000-5500">
+          5000-5500 FCFA
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+
+
+  </ion-list>
+</ion-content>
+
+<!--Footer buttons-->
+<ion-footer class="category">
+  <ion-toolbar position="bottom">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModalAll()">
+TOUT EFFACER      </ion-button>
+      <ion-button (click)="closeModal()">
+        <ion-text color="medium">APPLIQUER</ion-text>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

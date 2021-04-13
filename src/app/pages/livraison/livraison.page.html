@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Choix livraison</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label class="fond">
+        Livraison<br/>
+      </ion-label>
+      <ion-icon name="bus-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="fond" text-wrap>
+       Choisissez votre mode de livraison
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+    <ion-list lines="none">
+      <ion-radio-group allow-empty-selection="true" (ionChange)="Handler($event)" (ionSelect)="go($event)"
+      (ionBlur)="leave($event)">
+      <ion-item>
+        <ion-label class="btnradio">Retirer sur place</ion-label>
+        <ion-radio slot="end" checked  value="place"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  class="btnradio" text-wrap>Livrer chez vous (Frais de port:+1228,00FCFA)</ion-label>
+        <ion-radio slot="end"   value="livrer"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    </ion-list>
+
+
+  <div class="mode_livraison">
+
+
+     <div (click)="navigation()" class="text_livraison" >{{textbouton}}</div>
+
+  </div>
+
+</ion-content>

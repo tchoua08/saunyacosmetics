@@ -1,0 +1,7 @@
+{
+  "name": "saunyacosmetics",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

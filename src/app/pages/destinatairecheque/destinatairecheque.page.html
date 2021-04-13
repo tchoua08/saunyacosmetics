@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Livraison</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br/>
+  <ion-list lines="none">
+      <ion-item>
+        <ion-label>
+          <h1>
+            Livraison
+          </h1>
+          <p>
+           Envoi par e-mail
+          </p>
+        </ion-label>
+        <ion-icon slot="end" name="mail-outline"></ion-icon>
+      </ion-item>
+   </ion-list>
+
+   <ion-list lines="none">
+
+    <ion-list-header>
+      Paramètres
+    </ion-list-header>
+
+    <ion-radio-group allow-empty-selection="true" (ionChange)="Handler($event)" (ionSelect)="go($event)"
+    (ionBlur)="leave($event)">
+      <ion-item>
+        <ion-label text-wrap>
+          <h2>
+            Vous-même
+          </h2>
+          <p>
+           Vous recevez une version imprimable par email à remmetre en main propre
+          </p>
+        </ion-label>
+        <ion-radio slot="end"   value="invisible"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  text-wrap>
+          <h2>
+           Autre bénéficiaire
+          </h2>
+          <p>
+            La personne de votre choix recevra directement par email le chèque cadeau en version imprimable
+          </p>
+        </ion-label>
+        <ion-radio slot="end"   value="visible"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <div class="champ" *ngIf="visible==true">
+    <ion-label>Informations du bénéficiaire <span>*</span></ion-label>
+    <br/>
+   <div class="adresse">
+
+    <ion-input type="text" tabindex="20" placeholder="&nbsp;Nom"   required>
+    </ion-input>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+     <ion-input type="text" tabindex="20" placeholder="&nbsp;Prénom"   required>
+     </ion-input>
+   </div>
+   <br/>
+   <ion-input type="text" tabindex="20" placeholder="&nbsp;Email"   required>
+  </ion-input>
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="mode_livraison">
+
+    <div routerLink='/tabs/panier' class="text_livraison" >
+      Ajouter au panier
+    </div>
+
+ </div>
+
+</ion-footer>
+

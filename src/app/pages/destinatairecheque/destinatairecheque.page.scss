@@ -1,0 +1,49 @@
+.mode_livraison{
+  position: absolute;
+  bottom: 0px;
+  width:100%;
+  text-align: center;
+
+}
+.text_livraison{
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  background-color: #2dd36f;
+  color:white;
+  height: 50px;
+  padding:17px;
+}
+
+ion-label{
+  color:#758589;
+  font-weight:normal;
+  font-family: sans-serif;
+}
+h1,h2{
+  color:#2dd36f;
+  font-weight:normal;
+  font-family: sans-serif;
+}
+
+ion-list-header{
+  color:#2dd36f;
+  font-weight:normal;
+  font-family: sans-serif;
+}
+
+.adresse{width:100%;height:auto;display:flex;}
+
+ion-input{
+  border: solid 1px #758589;
+  border-radius: 10px;
+  text-align: left;
+  padding:15px;
+}
+.champ{
+  padding:15px;
+  text-align: center;
+}
+span{
+  color:red;
+}

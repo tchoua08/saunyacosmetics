@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Choix adresse</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+
+  <div  class="montant_payer" >
+    Montant à payer : 1536 FCFA
+  </div>
+
+  <div class="champ">
+    <ion-label>Numéro de carte *</ion-label>
+     <ion-input  placeholder="&nbsp;Numéro de carte"  required>
+     </ion-input>
+      <br/><br/>
+    <div class="coordonner">
+      <div>
+        <ion-label>Date d'expiration *</ion-label>
+        <ion-input type="text" tabindex="20" placeholder="&nbsp;mois/année"  required>
+        </ion-input>
+      </div>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div>
+        <ion-label>Code de sécurité CVV *</ion-label>
+        <ion-input type="text" tabindex="20" placeholder="&nbsp;code sécurité"  required>
+        </ion-input>
+      </div>
+
+    </div>
+
+
+   </div>
+
+  <div class="mode_livraison">
+
+
+     <div  class="text_livraison" >
+       Procéder au paiement
+
+     </div>
+
+  </div>
+
+</ion-content>

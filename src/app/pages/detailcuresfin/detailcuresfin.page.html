@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Détails</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success" defaultHref="/tabs/boutique/detailcures"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content fullscreen>
+    <ion-card class="card">
+      <img [src]="undetail[0]?.image">
+    </ion-card>
+    <section color="primary" class="full-width">
+      <ion-button routerLink='/tabs/panier/' expand="full">
+        Réserver
+      </ion-button>
+    </section>
+
+
+  <ion-list>
+
+    <ion-item lines="none" >
+      <ion-label  text-wrap>
+        <h2>{{undetail[0]?.titre}}</h2>
+        <p>{{undetail[0]?.heure}}</p>
+      </ion-label>
+      <div class="prix" text-wrap>
+        <br/>
+        {{undetail[0]?.prix}}&nbsp;{{undetail[0]?.devise}}
+        <br/>
+    </div>
+
+    </ion-item>
+</ion-list>
+<br/><br/>
+<div class="description" text-wrap>
+  {{undetail[0]?.description}}
+</div>
+  </ion-content>
+

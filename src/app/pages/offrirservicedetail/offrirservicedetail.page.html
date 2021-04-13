@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Offrir</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+
+  <div class="corps">
+    <div class="position" routerLink='/institut'>
+      <div class="aligner">Makepe, Douala</div>
+      <div>
+        <ion-icon class="aligner" name="chevron-down-outline">
+        </ion-icon>
+      </div>
+    </div>
+    <ion-list>
+      <ion-list-header  color="primary">
+
+        <ion-label>{{categorie}}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let unereservation of reservationsList">
+        <ion-thumbnail routerLink='/tabs/boutique/offrirserviceformat/{{unereservation.id}}' slot="start">
+          <img [src]="unereservation.image">
+        </ion-thumbnail>
+        <ion-label routerLink='/tabs/boutique/offrirserviceformat/{{unereservation.id}}' text-wrap>
+          <h3>{{unereservation.titre}}</h3>
+
+          <p>{{unereservation.heure}}</p>
+        </ion-label>
+
+        <span slot="end">{{unereservation.prix}}&nbsp;{{unereservation.devise}}</span>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

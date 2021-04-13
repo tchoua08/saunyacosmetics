@@ -1,0 +1,59 @@
+
+input::placeholder {
+  color: #9DA8AB;
+}
+
+input:focus {
+  outline: none;
+  color: #08242A;
+  padding: 2rem 1rem;
+}
+
+input:focus::placeholder {
+  color: #758589;
+}
+
+input.error {
+  color: #F54D3D;
+}
+
+input.success {
+  color: #28a745;
+}
+
+.contenu{
+  text-align: center;
+  margin-top:20px;
+}
+.champ{
+  padding: 15px;
+}
+img{
+  padding:25px;
+}
+
+
+p{
+  padding-top: 15px;
+  color:#28a745;
+}
+
+ion-button{
+
+  color:white;
+}
+
+ion-input{
+  border: solid 1px #758589;
+  border-radius: 10px;
+  text-align: left;
+  margin-top:10px;
+
+
+}
+.contenu>img{
+  padding:2px;
+  border-radius: 15px;
+  width: 50%;
+  height: 50%;
+}

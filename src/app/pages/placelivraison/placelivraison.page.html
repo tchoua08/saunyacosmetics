@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Point de livraison</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <div class="contenu">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+
+
+       <div class="text_place">
+        Vous êtes à Makepe, Douala
+       </div>
+
+       <div class="text_select">
+         Veuillez selectionner votre point de livraison
+        </div>
+  </div>
+  <ion-list>
+    <ion-radio-group allow-empty-selection="true">
+    <ion-item>
+      <ion-label class="btnradio">Makepe Bloc L</ion-label>
+      <ion-radio slot="end" checked  value="makepe"></ion-radio>
+    </ion-item>
+
+  </ion-radio-group>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <div class="mode_livraison">
+
+
+    <div routerLink='/tabs/panier/paiement/' class="text_livraison" >Procéder au paiement</div>
+
+ </div>
+
+</ion-footer>

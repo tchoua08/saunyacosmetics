@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+      <ion-title color="success">Sélection</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success" defaultHref="/tabs/reservation/detailreservation"></ion-back-button>
+      </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen >
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label class="text">
+       Prestations
+      </ion-label>
+      <span routerLink='/tabs/reservation' class="ajouter" slot="end">
+        + AJOUTER
+      </span>
+    </ion-item>
+  </ion-list>
+
+
+
+   <ion-list>
+    <ion-item *ngFor="let commande of bookings | async">
+      <ion-thumbnail slot="start">
+        <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.prestation.thumbnail_image)">
+      </ion-thumbnail>
+      <ion-label class="label" class="ion-text-wrap">
+        <h3>{{commande.prestation.name}}</h3>
+       <!-- <p>{{commande?.heure}}</p>-->
+      </ion-label>
+
+      <ion-label class="label" class="ion-text-wrap">
+        <h3>{{commande.prestation.unit_price}}FCFA</h3>
+      </ion-label>
+
+      <span slot="end">
+
+    <ion-icon (click)="delBooking(commande.id)" color="danger" name="trash-outline" slot="icon-only"></ion-icon>
+
+      </span>
+
+    </ion-item>
+
+  </ion-list>
+
+
+
+
+
+
+
+  <br/>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label class="text">Professionnel</ion-label>
+    </ion-item>
+
+    <ion-radio-group [(ngModel)]="coiffeur" allow-empty-selection="true">
+    <ion-item>
+      <ion-label class="btnradio">Sans préférence</ion-label>
+      <ion-radio slot="end" checked  value="preference"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="btnradio" text-wrap>
+        Coiffeur 1
+      </ion-label>
+      <ion-radio slot="end"   value="coiffeur1"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="btnradio" text-wrap>
+        Coiffeur 2
+      </ion-label>
+      <ion-radio slot="end"   value="coiffeur2"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="btnradio" text-wrap>
+        Coiffeur 3
+      </ion-label>
+      <ion-radio slot="end"   value="coiffeur3"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  </ion-list>
+  <br/><br/><br/>
+
+</ion-content>
+<div class="mode_livraison">
+
+
+</div>
+<ion-footer>
+
+  <ion-label>
+
+    <p class="montant">
+
+    Montant total <b>{{somme}}FCFA</b>
+
+    </p>
+    </ion-label>
+    <div routerLink='/tabs/reservation/horaire' class="text_livraison" (click)="goHoraire()">Choisir une date</div>
+
+
+</ion-footer>

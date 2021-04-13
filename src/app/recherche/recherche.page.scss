@@ -1,0 +1,40 @@
+ion-segment {
+  background: #f8f8f8!important;
+  ion-segment-button {
+    color:#28a745 !important;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 100% !important;
+
+    height: 4rem !important;
+    max-width: 100% !important;
+    line-height: 4rem !important;
+    border: 0 !important;
+
+    border-right: #28a745 solid .1rem !important;
+
+  }
+  ion-segment-button:last-child {
+    border: 0!important;
+  }
+  ion-segment-button.segment-activated {
+    background: #f8f8f8!important;
+    color: #28a745 !important;
+  }
+}
+
+.offrir{width:100%;height:auto;display:flex;}
+
+.cadeau{
+  padding: 10px;
+  text-align: center;
+  opacity:0.3;
+  width: 15%;
+}
+
+.text{
+  color:#758589;
+  font-weight:normal;
+  font-family: sans-serif;
+}
+

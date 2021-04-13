@@ -1,0 +1,181 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar *ngIf="activePage===0">
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Shopper</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf=" (toggled==false)" slot="end">
+      <ion-button icon-only (click)="toggleSearchbar()">
+        <ion-icon color="success" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar  color="success"
+    *ngIf="(toggled==true)"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+
+
+
+
+  <ion-toolbar *ngIf="activePage===1">
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Shopper</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="toggledp==false" slot="end">
+      <ion-button icon-only (click)="toggleSearchbarp()">
+        <ion-icon color="success" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar  color="success"
+    *ngIf="toggledp==true"
+    [showCancelButton]="true"
+    (ionInput)="onInputp($event)"
+    (ionCancel)="onCancelp($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-segment [(ngModel)]="selected">
+    <ion-segment-button value="add" (click)="selectedSegment(0)">
+
+      <span>
+       SERVICES</span>
+    </ion-segment-button>
+
+    <ion-segment-button value="lists" (click)="selectedSegment(1)">
+
+      <span>PRODUITS</span>
+    </ion-segment-button>
+
+  </ion-segment>
+  <div  *ngIf="activePage==0">
+
+    <ion-list>
+      <ion-list-header color="primary" lines="inset">
+        <ion-label>Offrir</ion-label>
+      </ion-list-header>
+      </ion-list>
+      <div class="offrir">
+
+        <div class="cadeau">
+         <img src="assets/image/cadeau.png" alt="">
+        </div>
+        <div>
+
+           <ion-item routerLink='/tabs/boutique/offrir'>
+             <p class="text">Un chèque cadeau</p>
+             <p class="text" slot="end">
+              FCFA
+             </p>
+           </ion-item>
+           <!--<ion-item routerLink='/tabs/boutique/offrirservice'>
+             <p class="text">Une prestation</p>
+             <p slot="end">
+               <ion-icon name="pricetags-outline"></ion-icon>
+             </p>
+           </ion-item>-->
+
+       </div>
+     </div>
+
+
+    <div class="corps">
+      <ion-list>
+
+        <ion-spinner class="spinner"  *ngIf="categories.length==0" text-center name="crescent" color="primary"></ion-spinner>
+        <div *ngIf="categories.length>0">
+
+          <ion-item *ngFor="let uneReservation of categories">
+
+            <ion-avatar slot="start" (click)="goReservation(uneReservation)">
+              <img src="{{imageUrl}}{{uneReservation.banner}}">
+            </ion-avatar>
+            <ion-label (click)="goReservation(uneReservation)" text-wrap>
+              <h3>{{uneReservation?.name}}</h3>
+            </ion-label>
+            <span slot="start">{{uneReservation?.heure}}</span>
+
+          </ion-item>
+
+        </div>
+
+
+      </ion-list>
+
+
+
+    </div>
+  </div>
+
+  <div  *ngIf="activePage==1">
+
+    <ion-list>
+      <ion-list-header color="primary" lines="inset">
+        <ion-label>Offrir</ion-label>
+      </ion-list-header>
+      </ion-list>
+      <div class="offrir">
+
+        <div class="cadeau">
+         <img src="assets/image/cadeau.png" alt="">
+        </div>
+        <div>
+
+           <ion-item routerLink='/tabs/boutique/offrir'>
+             <p class="text">Un chèque cadeau</p>
+             <p class="text" slot="end">
+              FCFA
+             </p>
+           </ion-item>
+
+
+       </div>
+     </div>
+
+
+    <ion-list>
+
+
+      <ion-spinner class="spinner"  *ngIf="categoriesp.length==0" text-center name="crescent" color="primary"></ion-spinner>
+      <div *ngIf="categoriesp.length>0">
+        <ion-item *ngFor="let uncat of categoriesp">
+          <ion-avatar slot="start" (click)="goCategoriep(uncat)" >
+            <img src="{{imageUrl}}{{uncat.banner}}">
+          </ion-avatar>
+          <ion-label (click)="goCategoriep(uncat)" text-wrap >
+            <h3>{{uncat.name}}</h3>
+          </ion-label>
+        </ion-item>
+      </div>
+
+
+  </ion-list>
+
+
+
+
+  </div>
+
+  <ion-infinite-scroll *ngIf="activePage===0" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Chargement des donneées...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+  <ion-infinite-scroll *ngIf="activePage===1" threshold="100px" (ionInfinite)="loadDatap($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Chargement des donneées...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

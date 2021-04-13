@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Boutique</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="toggled===false" slot="end">
+      <ion-button icon-only (click)="toggleSearchbar()">
+        <ion-icon color="success" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar color="success"
+    *ngIf="toggled===true"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+  <ion-list>
+    <ion-list-header class="catProduit" color="primary" lines="inset">
+      <ion-label>Offrir</ion-label>
+    </ion-list-header>
+    </ion-list>
+     <div class="offrir">
+
+       <div class="cadeau">
+        <img src="assets/image/cadeau.png" alt="">
+       </div>
+       <div>
+
+          <ion-item routerLink='/tabs/boutique/offrir'>
+            <p class="text">Un chèque cadeau</p>
+            <p class="text" slot="end">
+             FCFA
+            </p>
+          </ion-item>
+          <ion-item routerLink='/tabs/boutique/offrirservice'>
+            <p class="text">Une prestation</p>
+            <p slot="end">
+              <ion-icon name="pricetags-outline"></ion-icon>
+            </p>
+          </ion-item>
+
+      </div>
+    </div>
+    <ion-list>
+
+        <ion-list-header class="catProduit" color="primary" lines="inset">
+          <ion-label> Produits</ion-label>
+          <ion-button routerLink='/tabs/boutique/pluscategorie/' color="light"> Voir la suite</ion-button>
+        </ion-list-header>
+        <ion-spinner class="spinner"  *ngIf="categories.length==0" text-center name="crescent" color="primary"></ion-spinner>
+        <div *ngIf="categories.length>0">
+          <ion-item *ngFor="let uncat of categories">
+            <ion-thumbnail slot="start" (click)="goCategorie(uncat)" >
+              <img src="{{imageUrl}}{{uncat.banner}}">
+            </ion-thumbnail>
+            <ion-label (click)="goCategorie(uncat)" text-wrap >
+              <h3>{{uncat.name}}</h3>
+            </ion-label>
+          </ion-item>
+        </div>
+
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header  color="primary" lines="inset">
+        <ion-label> Cures</ion-label>
+
+      </ion-list-header>
+      <ion-item *ngFor="let unecure of curesList">
+        <ion-thumbnail routerLink='/tabs/boutique/detailcures/{{unecure.categorie}}' slot="start">
+          <img [src]="unecure.image">
+        </ion-thumbnail>
+        <ion-label routerLink='/tabs/boutique/detailcures/{{unecure.categorie}}' text-wrap>
+          <h3>{{unecure.categorie}}</h3>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-list-header  color="primary" lines="inset">
+      <ion-label>Cartes de fidélité</ion-label>
+
+    </ion-list-header>
+    <ion-item *ngFor="let unecarte of carteFidelite" >
+      <ion-thumbnail routerLink='/tabs/boutique/detailfidelite/{{unecarte.id}}' slot="start">
+        <img [src]="unecarte.image">
+      </ion-thumbnail>
+      <ion-label routerLink='/tabs/boutique/detailcartefidelite/{{unecarte.id}}' class="label" text-wrap>
+        <h3>{{unecarte.nom}}</h3>
+      </ion-label>
+      <span slot="end" routerLink='/tabs/boutique/detailcartefidelite/{{unecarte.id}}' text-wrap> {{unecarte.reduction}}<br/><del>
+        {{unecarte.prix}}&nbsp;{{unecarte.devise}}
+      </del><br/>{{unecarte.prixremise}}&nbsp;{{unecarte.devise}}</span>
+
+    </ion-item>
+</ion-list>
+
+
+
+</ion-content>

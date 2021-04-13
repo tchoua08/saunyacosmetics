@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Connexion</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <div class="contenu">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+
+
+      <div class="champ">
+
+        <ion-spinner class="spinner"  *ngIf="start=='oui'" text-center name="crescent" color="primary"></ion-spinner>
+        <div class="form-group">
+
+          <ion-input type="text" class="form-control" id="email" name="email"
+           [(ngModel)]='userEmail'
+            placeholder="Ex: alain.durand@gmail.com"
+            required=""></ion-input>
+        </div>
+        <div class="form-group">
+          <ion-input type="password"
+          [(ngModel)]='userPassword'
+           class="form-control" name="pass" id="password" placeholder="Mot de passe"
+            required=""></ion-input>
+        </div>
+
+
+       </div>
+
+
+
+      <p>
+
+        <ion-button routerLink='/tabs/profil/monprofil' (click)="login()" color="success">
+          Se connecter
+        </ion-button>
+      </p>
+
+
+     <p class="motpasseoublier" routerLink='/tabs/profil/motpasseoublier'>
+      Mot de passe oublié
+      </p>
+
+      <p routerLink='/tabs/profil/creercompte'>
+        Création votre compte
+       </p>
+
+  </div>
+</ion-content>
+
+
+
+

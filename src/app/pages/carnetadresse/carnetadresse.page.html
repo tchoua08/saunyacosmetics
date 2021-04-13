@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Carnet d'adresses</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success"
+        defaultHref="/tabs/profil/monprofil"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button
+        mode="md"
+        expand="full"
+        fill="solid"
+        (click)="btnAjouter()"
+        >
+        AJOUTER NOUVELLE ADRESSE
+      </ion-button>
+      </ion-card-subtitle>
+
+    </ion-card-header>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-content>
+      <ion-list lines="none">
+
+        <ion-item>
+          <ion-label>
+
+            <h3>Bienvenue TCHOUA</h3>
+            <p>denefrf</p>
+            <p>defrxwxc</p>
+            <p>zdzdemlsd</p>
+            <p>Cameroun</p>
+            <p>Tél:77656545</p>
+          </ion-label>
+        </ion-item>
+
+        </ion-list>
+
+        <ion-list lines="none">
+
+        <ion-item>
+          <ion-button (click)="btnModifier()" slot="start" expand="full" color="medium">Modifier</ion-button>
+          <ion-button (click)="btnEffacer()" slot="end" expand="full" color="medium">Effacer</ion-button>
+        </ion-item>
+
+        </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

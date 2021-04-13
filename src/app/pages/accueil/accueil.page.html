@@ -1,0 +1,54 @@
+
+<ion-content padding >
+  <div class="contenu">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+
+       <div class="text_bienvenue">
+         Bienvenue
+       </div>
+       <div class="text_place">
+         {{uneagence}}
+       </div>
+
+       <div class="text_select">
+         Veuillez selectionner un institut
+        </div>
+
+
+  </div>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="uneagence" allow-empty-selection="true">
+
+    <ion-item *ngFor="let uneagence of agencesList" >
+      <ion-label  class="btnradio" text-wrap>
+        {{uneagence.name}}
+      </ion-label>
+      <ion-radio slot="end"   [value]="uneagence.name"></ion-radio>
+    </ion-item>
+
+  </ion-radio-group>
+  </ion-list>
+
+
+  <ion-refresher  slot="fixed" (ionRefresh)="fndoRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button [disabled]="uneagence==''" expand="block" color="success" (click)="serviceValidation()">
+            Valider
+          </ion-button>
+        </div>
+      </ion-col>
+
+    </ion-row>
+    </ion-grid>
+
+</ion-footer>
+

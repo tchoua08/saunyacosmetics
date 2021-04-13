@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Détails</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success" defaultHref="/tabs/reservation/subcatreserver1"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content fullscreen>
+    <ion-card class="card">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  prestationsList.thumbnail_image)">
+    </ion-card>
+    <section color="primary" class="full-width">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-button expand="block" color="success" routerLink='/tabs/boutique/offrir/'>
+                Offrir
+              </ion-button>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-button expand="block" color="success" (click)="openNearModal()">
+                Réserver
+              </ion-button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        </ion-grid>
+
+    </section>
+
+
+  <ion-list>
+
+    <ion-item lines="none" >
+      <ion-label  text-wrap>
+        <h2>{{prestationsList?.name}}</h2>
+        <p>{{prestationsList?.heure}}</p>
+      </ion-label>
+      <div class="prix" text-wrap>
+        <br/>
+        {{prestationsList?.unit_price}}&nbsp;FCFA
+        <br/>
+    </div>
+
+    </ion-item>
+</ion-list>
+<br/><br/>
+<div [innerHTML]="prestationsList?.description" class="description" text-wrap>
+</div>
+
+  </ion-content>
+

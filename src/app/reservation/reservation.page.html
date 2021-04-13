@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Réserver</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="toggled===false" slot="end">
+      <ion-button icon-only (click)="toggleSearchbar()">
+        <ion-icon color="success" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar color="success"
+    *ngIf="toggled===true"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+
+  <div class="entete">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+      <div class="position" routerLink='/institut'>
+        <div class="aligner" *ngIf="(agence!=null)">{{agence}}</div>
+        <div class="aligner" *ngIf="agence===null">
+          Choisir un institut
+        </div>
+        <div>
+          <ion-icon class="aligner" name="chevron-down-outline">
+          </ion-icon>
+        </div>
+      </div>
+      <h1 *ngIf="item?.name!=''">Bienvenue {{item?.name}}</h1>
+      <h1 *ngIf="item?.name===''">Bienvenue</h1>
+      <h6>Sélectionner une catégorie ou une prestation</h6>
+
+  </div>
+
+  <div class="corps">
+    <ion-list>
+      <ion-list-header  color="primary">
+
+        <ion-label>Réserver</ion-label>
+      </ion-list-header>
+
+      <ion-spinner class="spinner"  *ngIf="categories.length==0" text-center name="crescent" color="primary"></ion-spinner>
+      <div *ngIf="categories.length>0">
+
+        <ion-item *ngFor="let uneReservation of categories">
+
+          <ion-thumbnail slot="start" (click)="goReservation(uneReservation)">
+            <img src="{{imageUrl}}{{uneReservation.banner}}">
+          </ion-thumbnail>
+          <ion-label (click)="goReservation(uneReservation)" text-wrap>
+            <h3>{{uneReservation?.name}}</h3>
+          </ion-label>
+          <span slot="start">{{uneReservation?.heure}}</span>
+
+        </ion-item>
+
+      </div>
+
+
+    </ion-list>
+
+  </div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+      <ion-title color="success">Modifier</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success"
+        defaultHref="/tabs/profil/carnetadresse"></ion-back-button>
+      </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-item>
+      <ion-icon slot="start" name="business-outline"></ion-icon>
+      <ion-label class="texte"position="floating">
+       Saisir votre adresse
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+      <ion-label class="texte" position="floating">
+        code postal
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="home-outline"></ion-icon>
+      <ion-label class="texte" position="floating">
+        Quatier
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="business-outline"></ion-icon>
+      <ion-label class="texte" position="floating">
+        Ville
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon  slot="start" name="call-outline"></ion-icon>
+      <ion-label class="texte" position="floating">
+       Numéro de téléphone
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <br/>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button
+        mode="md"
+        expand="full"
+        fill="solid"
+        >
+       MODIFIER
+      </ion-button>
+      </ion-card-subtitle>
+
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

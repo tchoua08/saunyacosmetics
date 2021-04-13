@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="success">Détails</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="success"
+      defaultHref="/tabs/profil/myappointment"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list lines="none">
+      <ion-item  (click)="salon_profile()">
+          <div class="item_inner d-flex">
+              <div class="img_box center_img">
+                  <img src="assets/image/12.png" class="crop_img">
+              </div>
+              <div class="text_box">
+                  <h3 class="d-flex">
+                      <span class="rating">
+                          <ion-icon class="zmdi zmdi-star active"></ion-icon>
+                          <ion-icon class="zmdi zmdi-star active"></ion-icon>
+                          <ion-icon class="zmdi zmdi-star active"></ion-icon>
+                          <ion-icon class="zmdi zmdi-star active"></ion-icon>
+                          <ion-icon class="zmdi zmdi-star"></ion-icon>
+                      </span>
+                      &nbsp;&nbsp;4.5
+                  </h3>
+                  <h2>Restro Salons</h2>
+                  <h4 class="d-flex">
+                      <ion-icon class="zmdi zmdi-pin ion-text-start"></ion-icon>
+                      <span>Makepe bloc L</span>
+                  </h4>
+              </div>
+          </div>
+      </ion-item>
+
+      <div class="appointment_info">
+          <ion-item class="animate__animated animate__fadeInUp">
+              <div class="item_inner">
+                  <h3 class="">Date</h3>
+                  <h2 class="d-flex">April 16, 2020 (Monday) <span class="end" (click)="book_appointment()">Reprogrammer</span></h2>
+              </div>
+          </ion-item>
+
+          <ion-item class="animate__animated animate__fadeInUp">
+              <div class="item_inner">
+                  <h3 class="">temps</h3>
+                  <h2 class="d-flex">12:00 AM <span class="end">Annuler</span></h2>
+              </div>
+          </ion-item>
+
+          <ion-item class="animate__animated animate__fadeInUp">
+              <div class="item_inner">
+                  <h3 class="">Services</h3>
+                  <div class="services">
+                      <div class="service">
+                          <h2 class="d-flex">Face Bleach <span class="end">1500FCFA</span></h2>
+                          <h4>25 mins</h4>
+                      </div>
+                      <div class="service">
+                          <h2 class="d-flex">Detanning <span class="end">1500FCFA</span></h2>
+                          <h4>22 mins</h4>
+                      </div>
+                      <div class="service">
+                          <h2 class="d-flex">Style My Hair <span class="end">2300FCFA</span></h2>
+                          <h4>30 mins</h4>
+                      </div>
+                      <div class="service">
+                          <h2 class="d-flex">Color My Hair <span class="end">30FCFA</span></h2>
+                          <h4>35 mins</h4>
+                      </div>
+                  </div>
+              </div>
+          </ion-item>
+      </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="services_fee">
+      <h2 class="d-flex">
+        Frais de service
+        <span class="end">500FCFA</span></h2>
+  </div>
+  <div class="total d-flex">
+      <h2>900FCFA <small>&nbsp;En total.</small></h2>
+
+      <ion-button size="large" shape="round" fill="outline" class="btn end animate__animated animate__zoomIn">Direction</ion-button>
+  </div>
+</ion-footer>

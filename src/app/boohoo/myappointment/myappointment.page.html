@@ -1,0 +1,121 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Mes réservations</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success"
+        defaultHref="/tabs/profil/monprofil"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg_color" fullscreen>
+  <ion-list lines="none">
+      <div class="list-inner upcoming">
+          <h2>A venir</h2>
+          <ion-item class="animate__animated animate__fadeInUp">
+              <div class="item_inner d-flex">
+                  <div class="img_appointmentDate" (click)="appointment_info()">
+                      <div class="img_box center_img">
+                          <img src="assets/image/12.png" class="crop_img">
+                      </div>
+                      <div class="appointment_date">
+                          <h3>Apr</h3>
+                          <h2>16</h2>
+                          <h3 class="day">Mon</h3>
+                      </div>
+                  </div>
+                  <div class="text_box">
+                      <h5 class="d-flex">12:00 AM <span class="end">direction</span></h5>
+                      <h3 class="d-flex" (click)="appointment_info()">
+                        Lieu
+                      </h3>
+                      <h4 class="d-flex" (click)="appointment_info()">
+                          <ion-icon class="zmdi zmdi-pin"></ion-icon>
+                          <span>Makepe bloc L</span>
+                      </h4>
+                  </div>
+              </div>
+          </ion-item>
+
+
+          <ion-item class="animate__animated animate__fadeInUp">
+              <div class="item_inner d-flex">
+                  <div class="img_appointmentDate" (click)="appointment_info()">
+                      <div class="img_box center_img">
+                          <img src="assets/image/12.png" class="crop_img">
+                      </div>
+                      <div class="appointment_date">
+                          <h3>Apr</h3>
+                          <h2>19</h2>
+                          <h3 class="day">Thu</h3>
+                      </div>
+                  </div>
+                  <div class="text_box">
+                      <h5 class="d-flex">04:00 AM <span class="end">direction</span></h5>
+                      <h3 class="d-flex" (click)="appointment_info()">Ultra Unisex</h3>
+                      <h4 class="d-flex" (click)="appointment_info()">
+                          <ion-icon class="zmdi zmdi-pin"></ion-icon>
+                          <span> Operum Tower, Lisadona house, New York</span>
+                      </h4>
+                  </div>
+              </div>
+          </ion-item>
+      </div>
+
+
+      <div class="list-inner past_booking">
+        <h2>Passer</h2>
+        <ion-item class="animate__animated animate__fadeInUp">
+            <div class="item_inner d-flex">
+                <div class="img_appointmentDate" (click)="appointment_info()">
+                    <div class="img_box center_img">
+                        <img src="assets/image/5.png" class="crop_img">
+                    </div>
+                    <div class="appointment_date">
+                        <h3>Apr</h3>
+                        <h2>10</h2>
+                        <h3 class="day">Mon</h3>
+                    </div>
+                </div>
+                <div class="text_box">
+                    <h5 class="d-flex">11:00 AM <span class="end" (click)="rate_now()">
+                      Revoir maintenant
+                    </span></h5>
+                    <h3 class="d-flex" (click)="appointment_info()">Peter Parlor</h3>
+                    <h4 class="d-flex" (click)="appointment_info()">
+                        <ion-icon class="zmdi zmdi-pin"></ion-icon>
+                        <span> Welingtone street, Apple Graden New York </span>
+                    </h4>
+                </div>
+            </div>
+        </ion-item>
+
+
+        <ion-item class="animate__animated animate__fadeInUp">
+            <div class="item_inner d-flex">
+                <div class="img_appointmentDate" (click)="appointment_info()">
+                    <div class="img_box center_img">
+                        <img src="assets/image/4.png" class="crop_img">
+                    </div>
+                    <div class="appointment_date">
+                        <h3>Apr</h3>
+                        <h2>06</h2>
+                        <h3 class="day">Thu</h3>
+                    </div>
+                </div>
+                <div class="text_box">
+                    <h5 class="d-flex">02:00 PM <span class="end" (click)="rate_now()">Revoir maintenant</span></h5>
+                    <h3 class="d-flex" (click)="appointment_info()">Coiffure</h3>
+                    <h4 class="d-flex" (click)="appointment_info()">
+                        <ion-icon class="zmdi zmdi-pin"></ion-icon>
+                        <span>Makepe bloc L</span>
+                    </h4>
+                </div>
+            </div>
+        </ion-item>
+
+    </div>
+
+  </ion-list>
+</ion-content>

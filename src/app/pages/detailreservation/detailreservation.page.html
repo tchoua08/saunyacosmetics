@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Réserver</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success" defaultHref="/tabs/reservation"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+
+  <div class="corps">
+    <div class="position" routerLink='/institut'>
+      <div class="aligner">{{agence}}</div>
+      <div>
+        <ion-icon class="aligner" name="chevron-down-outline">
+        </ion-icon>
+      </div>
+    </div>
+    <ion-list>
+      <ion-list-header  color="primary">
+
+        <ion-label>{{categorie}}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let unereservation of reservationsList">
+        <ion-thumbnail routerLink='/tabs/reservation/detailreservationfinal/{{unereservation.id}}' slot="start">
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+ unereservation.thumbnail_image)">
+        </ion-thumbnail>
+        <ion-label routerLink='/tabs/reservation/detailreservationfinal/{{unereservation.id}}' text-wrap>
+          <h3>{{unereservation?.name}}</h3>
+
+          <p>{{unereservation?.heure}}</p>
+        </ion-label>
+
+        <span slot="end">{{unereservation.unit_price}}&nbsp;FCFA</span>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

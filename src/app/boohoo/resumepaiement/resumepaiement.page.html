@@ -1,0 +1,215 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="success" defaultHref="/tabs/panier"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Paiement</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+
+</ion-header>
+<ion-content padding>
+  <div class="div-main-header">
+    <div class="div-number1">
+      <div class="div-cicle1">
+        <img class="imge" src="../../../assets/image/1.png" alt="">
+      </div>
+      <label class="label-div-cicle1" for="">Livraison</label>
+    </div>
+    <div class="div-line1">
+      <img src="../../../assets/image/separation.png">
+    </div>
+    <div class="div-number2">
+      <div class="div-cicle2">
+        <img class="imge" src="../../../assets/image/2.png" alt="">
+      </div>
+      <label class="label-div-cicle2" for="">Paiement</label>
+    </div>
+    <div class="div-line2">
+      <img src="../../../assets/image/separation.png">
+    </div>
+    <div class="div-number3">
+      <div class="div-cicle3">
+        <img class="imge" src="../../assets/image/3.png" alt="">
+      </div>
+      <label class="label-div-cicle3" for="">
+
+       Confirmation
+
+      </label>
+    </div>
+
+  </div>
+
+  <div>
+
+    <ion-list>
+      <ion-list-header>
+       CHEQUE-CADEAU
+      </ion-list-header>
+
+      <ion-item>
+        <ion-icon slot="start" name="gift-outline"></ion-icon>
+        <ion-label class="texte"position="floating">
+          Chèque-cadeau
+         </ion-label>
+         <ion-input></ion-input>
+
+      </ion-item>
+      </ion-list>
+
+      <ion-button  expand="full" color="success">APPLIQUER</ion-button>
+
+      <ion-button  expand="full" color="medium">VERIFIER LE SOLDE</ion-button>
+
+      <ion-list>
+        <ion-list-header>
+       ADRESSE DE FACTURATION
+        </ion-list-header>
+
+        <ion-item>
+          <ion-button slot="end" expand="full" color="medium">Charger</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+
+            <h3>Bienvenue TCHOUA</h3>
+            <p>denefrf</p>
+            <p>defrxwxc</p>
+            <p>zdzdemlsd</p>
+            <p>Cameroun</p>
+            <p>Tél:77656545</p>
+          </ion-label>
+        </ion-item>
+        </ion-list>
+
+
+        <ion-list>
+          <ion-list-header>
+         ADRESSE DE LIVRAISON
+          </ion-list-header>
+
+          <ion-item>
+            <ion-button slot="end" expand="full" color="medium">Charger</ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+
+              <h3>Bienvenue TCHOUA</h3>
+              <p>denefrf</p>
+              <p>defrxwxc</p>
+              <p>zdzdemlsd</p>
+              <p>Cameroun</p>
+              <p>Tél:77656545</p>
+            </ion-label>
+          </ion-item>
+          </ion-list>
+
+
+          <ion-list>
+            <ion-list-header>
+           OPTION DE LIVRAISON
+            </ion-list-header>
+
+            <ion-item>
+              <ion-button slot="end" expand="full" color="medium">Charger</ion-button>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+
+                <p slot="start">Livraison jusqu'a 8 jours ouvrable</p>
+                <h2 slot="end">1100 FCFA</h2>
+
+              </ion-label>
+            </ion-item>
+            </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          PANIER ({{imageItems?.length}} ARTICLES)
+        </ion-list-header>
+      <ion-item>
+        <ion-button [routerLink]="['/tabs/panier']"  slot="end" expand="full" color="medium">Modifier</ion-button>
+        <ion-icon (click)="btnAction('ouvert')" *ngIf="action==='fermer'" slot="end" name="chevron-down-outline"></ion-icon>
+        <ion-icon (click)="btnAction('fermer')" *ngIf="action==='ouvert'" slot="end" name="chevron-up-outline"></ion-icon>
+      </ion-item>
+      <ion-slides *ngIf="action==='ouvert'" [options]="slideOptsTop">
+        <ion-slide *ngFor="let element of imageItems">
+          <ion-card  class="ion-text-start" class="cardbas">
+            <img class="imgshow" [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+element.image)"/>
+            <ion-card-content>
+              {{element.name }}...
+             </ion-card-content>
+          </ion-card>
+
+        </ion-slide>
+      </ion-slides>
+
+        <ion-item>
+
+            <p slot="start">Sous-total</p>
+            <p slot="end" color="success">
+              <b>{{somme+sommeub}}FCFA</b>
+            </p>
+
+        </ion-item>
+
+        <ion-item>
+
+            <p slot="start">Livraison</p>
+            <p slot="end" color="success">
+              <b>2500 FCFA</b>
+            </p>
+
+        </ion-item>
+
+        <ion-item>
+          <p>
+            <b>Total de la commande</b>(livraison incluse ): *Taxes comprises
+          </p>
+          <p slot="end" color="success">
+            <b>{{somme+sommeub+2500}}FCFA</b>
+          </p>
+       </ion-item>
+      </ion-list>
+
+
+      <ion-list lines="none">
+        <ion-list-header>
+       OPTION DE PAIEMENT
+        </ion-list-header>
+
+          <ion-radio-group allow-empty-selection="true" >
+          <ion-item>
+            <ion-label class="btnradio">OM<br/>
+              <ion-text>payer pas Orange money</ion-text>
+            </ion-label>
+
+            <ion-radio slot="start" checked  value="place"></ion-radio>
+
+          </ion-item>
+
+          <ion-item>
+         <ion-label  class="btnradio" text-wrap>MOMO<br/><ion-text>Payer pas MTN Money</ion-text></ion-label>
+            <ion-radio slot="start"   value="livrer"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+
+
+        </ion-list>
+
+      <ion-button  expand="full" color="success">PAYER MAINTENANT</ion-button>
+  </div>
+
+
+</ion-content>

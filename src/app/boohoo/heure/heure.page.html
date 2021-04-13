@@ -1,0 +1,31 @@
+
+<ion-content padding >
+
+  <div  *ngIf="type==='Hmin'">
+    <h2>Heures</h2>
+     <br>
+    <ion-list lines="none"  >
+      <ion-item *ngFor="let i of heures" (click)="t(i)">
+
+        {{i}}
+
+     </ion-item>
+
+    </ion-list>
+  </div>
+
+  <div   *ngIf="type==='Mmin'">
+    <h2>Minutes</h2>
+     <br>
+    <ion-list lines="none" >
+      <ion-item *ngFor="let i of minutes"  (click)="t(i)">
+
+        {{i}}
+
+     </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>
+

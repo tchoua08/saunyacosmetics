@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+      <ion-title color="success">Choix adresse</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label class="fond">
+        Livraison<br/>
+      </ion-label>
+      <ion-icon name="bus-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="fond" text-wrap>
+       Choisissez votre mode de livraison
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+  <div class="champ">
+
+    <div class="name">
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;Nom"  required>
+      </ion-input>
+      &nbsp;&nbsp;&nbsp;
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;Prénom"  required>
+      </ion-input>
+    </div>
+
+
+    <ion-input type="text" tabindex="20" placeholder="&nbsp;Email"  required>
+    </ion-input>
+
+    <ion-input type="text" tabindex="20" placeholder="&nbsp;Mobile(10 chiffres sans autre caractère)"  required>
+    </ion-input>
+
+
+     <ion-input  placeholder="&nbsp;Adresse (1e ligne)"  required>
+     </ion-input>
+
+     <ion-input  placeholder="&nbsp;Adresse (2e ligne)"  required>
+    </ion-input>
+
+    <div class="adresse">
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;Ville"  required>
+      </ion-input>
+      &nbsp;&nbsp;&nbsp;
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;Quatier"  required>
+      </ion-input>
+    </div>
+
+
+   </div>
+
+
+</ion-content>
+<ion-footer>
+  <div class="mode_livraison">
+
+
+    <div routerLink='/tabs/panier/paiement' class="text_livraison" >
+      Procéder au paiement
+
+    </div>
+
+ </div>
+
+</ion-footer>

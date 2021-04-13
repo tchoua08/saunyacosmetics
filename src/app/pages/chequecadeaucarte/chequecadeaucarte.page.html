@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Chèque Cadeau</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br/>
+  <ion-card color="success" class="ion-text-start" class="cardhaut">
+      <div>
+        <div class="card-title" >&nbsp;&nbsp;{{montant}}FCFA</div>
+        <div class="card-subtitle" >
+          &nbsp;&nbsp; 05/03/2021
+        </div>
+
+    </div>
+      <div class="organiser">
+        <img src="assets/icon/saunyacosmetics.png">
+      </div>
+  </ion-card>
+
+  <div class="champ">
+
+     <ion-textarea rows="4" cols="20" placeholder="Votre message personnalisé"></ion-textarea>
+
+    <div class="adresse">
+      <ion-label class="valeur">
+        Valeur du chèque (FCFA)
+      </ion-label>
+      &nbsp;&nbsp;&nbsp;
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;"  [(ngModel)]="montant" required>
+      </ion-input>
+    </div>
+
+
+   </div>
+    <br/><br/><br/><br/>
+</ion-content>
+<ion-footer>
+  <div class="mode_livraison">
+
+    <div routerLink='/tabs/panier' class="text_livraison" >
+      Ajouter au panier
+    </div>
+
+ </div>
+
+</ion-footer>

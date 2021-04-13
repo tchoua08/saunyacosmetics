@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Détails</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content fullscreen>
+    <ion-card class="card">
+      <img [src]="uneCarteFidelite[0]?.image">
+    </ion-card>
+    <section color="primary" class="full-width">
+      <ion-button routerLink='/tabs/panier/' expand="full">
+        Ajouter au panier
+      </ion-button>
+    </section>
+
+
+  <ion-list>
+
+    <ion-item lines="none" >
+      <ion-label  text-wrap>
+        <h2>{{uneCarteFidelite[0]?.nom}}</h2>
+      </ion-label>
+      <div class="prix" text-wrap>
+        <br/>
+      <span>
+        {{uneCarteFidelite[0]?.reduction}}
+      </span> <br/><br/>
+        <del>
+        {{uneCarteFidelite[0]?.prix}}&nbsp;{{uneCarteFidelite[0]?.devise}}
+      </del><br/><br/>
+      {{uneCarteFidelite[0]?.prixremise}}&nbsp;{{uneCarteFidelite[0]?.devise}}
+    </div>
+
+    </ion-item>
+</ion-list>
+<br/><br/>
+<div class="description" text-wrap>
+  {{uneCarteFidelite[0]?.description}}
+</div>
+  </ion-content>
+

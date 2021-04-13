@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Détails</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="success" defaultHref="/tabs/boutique"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+
+  <div class="corps">
+    <ion-list>
+      <ion-list-header  color="primary">
+
+        <ion-label>{{categorie}}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let unproduit of produitsList">
+        <ion-thumbnail slot="start" routerLink='/tabs/boutique/detailproduitfin/{{unproduit.id}}'>
+          <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+ unproduit.thumbnail_image)">
+        </ion-thumbnail>
+        <ion-label text-wrap routerLink='/tabs/boutique/detailproduitfin/{{unproduit.id}}'>
+          <h3>{{unproduit.name}}</h3>
+        </ion-label>
+
+        <span slot="end">{{unproduit.unit_price}}&nbsp;FCFA</span>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

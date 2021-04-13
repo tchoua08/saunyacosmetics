@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Offrir</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="entete"> Quel format préférez-vous?</div>
+
+  <img style="margin:auto;" class="circle" src="assets/image/fcfa.jpg" alt="">
+
+<ion-item>
+  <p class="textitem" routerLink='/tabs/boutique/offrirservicechequecadeau/{{id}}'>
+     Un email imprimable
+  </p>
+  <ion-icon slot="end" name="mail-outline"></ion-icon>
+</ion-item>
+<ion-item>
+  <p class="textitem" routerLink='/tabs/boutique/offrirservicecarte/{{id}}'>
+     Une carte livrée chez vous
+  </p>
+  <ion-icon slot="end" name="bus-outline"></ion-icon>
+</ion-item>
+</ion-content>

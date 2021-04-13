@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title color="success">Chèque Cadeau</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="perso">
+    Personnalisation
+  </div>
+  <ion-card color="success" class="ion-text-start" class="cardhaut">
+    <img src="{{reservationsList[0]?.image}}">
+    <div class="card-title">05/03/2022&nbsp;&nbsp;</div>
+    <div class="card-subtitle">
+      &nbsp;&nbsp;&nbsp; {{reservationsList[0]?.titre}}
+    </div>
+  </ion-card>
+
+  <div class="champ">
+    <ion-input type="text" tabindex="20"
+    placeholder="&nbsp;Votre titre"  required>
+    </ion-input>
+
+     <ion-textarea rows="4" cols="20" placeholder="Votre message personnalisé"></ion-textarea>
+
+    <div class="adresse">
+      <ion-label class="valeur">
+        Valeur du chèque (FCFA)
+      </ion-label>
+      &nbsp;&nbsp;&nbsp;
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;{{reservationsList[0]?.prix}}"  [readonly]="true" required>
+      </ion-input>
+    </div>
+
+
+   </div>
+    <br/><br/><br/><br/>
+</ion-content>
+<ion-footer>
+  <div class="mode_livraison">
+
+    <div routerLink='/tabs/boutique/offrirservicedestinatairecheque/' class="text_livraison" >
+     Choisir un destinataire
+    </div>
+
+ </div>
+
+</ion-footer>

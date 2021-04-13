@@ -1,0 +1,189 @@
+
+input::placeholder {
+  color: #9DA8AB;
+}
+
+input:focus {
+  outline: none;
+  color: #08242A;
+  padding: 2rem 1rem;
+}
+
+input:focus::placeholder {
+  color: #758589;
+}
+
+
+input.error {
+  color: #F54D3D;
+}
+
+input.success {
+  color: #28a745;
+}
+
+.contenu{
+  text-align: center;
+  margin-top:10px;
+}
+.champ{
+  padding: 5px;
+}
+
+h6{
+  font-size: 14px;
+  margin-top:-1px;
+}
+
+
+
+p{
+  padding-top: 15px;
+  color:#28a745;
+}
+
+ion-button{
+
+  color:white;
+}
+
+ion-input{
+  border: solid 1px #758589;
+  border-radius: 10px;
+  text-align: left;
+  margin-top:10px;
+
+
+}
+ion-textarea{
+  border: solid 1px #758589;
+  border-radius: 10px;
+  text-align: left;
+  margin-top:10px;
+}
+.icon{
+  margin-left:0px;
+ }
+ del{
+   font-weight:normal;
+   font-family: sans-serif;
+ }
+
+ p{
+   font-family: sans-serif;
+   font-size: 15px;
+ }
+
+
+ span{
+   color:#758589;
+   font-weight: bold;
+   font-size:small;
+   font-family: sans-serif;
+ }
+ h3{
+   color:#758589;
+   font-weight: bold;
+   font-family: sans-serif;
+ }
+
+ .mode_livraison{
+   position: absolute;
+   bottom: 0px;
+   width:100%;
+   text-align: center;
+
+ }
+ .text_livraison{
+   text-align: center;
+   font-weight: bold;
+   font-family: sans-serif;
+   background-color: #2dd36f;
+   color:white;
+   height: 50px;
+   padding:17px;
+ }
+
+ b{
+   font-weight: bold;
+   font-size: 17px;
+ }
+
+.fond{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color:#758589;
+}
+ion-icon {
+  font-size: 24px;
+  color:#758589;
+  --ionicon-stroke-width: 16px;
+}
+
+
+ .name{width:100%;height:auto;display:flex;}
+ .adresse{width:100%;height:auto;display:flex;}
+
+ .perso{
+  color: #758589;
+  font-family: sans-serif;
+  padding-top:1rem;
+  font-size: 20px;
+  text-align: center;
+}
+.valeur{
+  color: #758589;
+  font-family: sans-serif;
+  padding-top:24px;
+}
+.cardhaut{
+   width: 50% !important;
+   height: 25% !important;
+   border-radius: 15px !important;;
+   margin:auto;
+
+}
+.cardhaut>img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.cardbas {
+   width: 95% !important;
+   height: 95% !important;
+   border-radius: 15px;
+   }
+.cardbas>img{
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 15px;
+   }
+   .swiper-slide {
+    max-height: 50%  !important;
+    max-width: 50% !important;
+
+  }
+
+  .card-title {
+    position: absolute;
+    top: 10%;
+    left:57%;
+    font-size: 1.0em;
+    width: 100%;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 2.0em;
+    font-weight: bold;
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    color: #fff;
+  }
+
+
+
+
+
+

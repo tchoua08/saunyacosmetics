@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Validation numéro téléphone</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar *ngIf="countries !=null"
+
+  [showCancelButton]="false"
+  (ionInput)="getItemsAstuces($event)"
+  placeholder="Rechercher..."
+></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let c of countries" (click)="go(c)">
+      <ion-avatar item-left >
+        <img src="{{c.flag}}">
+      </ion-avatar>
+      <h2>{{c.name}}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

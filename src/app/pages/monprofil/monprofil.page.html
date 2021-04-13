@@ -1,0 +1,133 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="success">
+       Mon profil
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <!--- <ion-grid>
+      <ion-row>
+        <ion-col size="3" class="person">
+          <div>
+            <img style="margin:auto;" src="assets/icon/user.png" alt="">
+          </div>
+        </ion-col>
+        <ion-col class="profil">
+          <div >
+            <p class="nom">{{item?.name}}</p>
+            <p class="voirprofil">Voir et modifier le profil</p>
+          </div>
+        </ion-col>
+       <ion-col size="3"  class="exit">
+          <div class="ion-text-end">
+            <ion-icon (click)="sortir()" color="danger" size="large" name="exit"></ion-icon>&nbsp;&nbsp;
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>-->
+
+
+<ion-content>
+  <!--<ion-segment color="tertiary" value="favorite">
+    <ion-segment-button value="call">
+      <ion-label>Vue d'ensemble</ion-label>
+      <ion-icon color="primary" name="globe-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="favorite">
+      <ion-label>Mes avis</ion-label>
+      <ion-icon color="primary" name="star-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="map">
+      <ion-label>Mes achats</ion-label>
+      <ion-icon color="primary" name="time-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>-->
+
+  <ion-list>
+    <ion-item (click)="btnModProfil()">
+      <ion-icon color="medium" name="person-outline"></ion-icon>
+      <p>&nbsp;Information de votre profil</p>
+      <ion-icon color="medium" name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item (click)="btnModPwd()">
+      <ion-icon color="medium" name="checkmark-done-outline"></ion-icon>
+      <p>&nbsp;Changer le mot de passe</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item  (click)="carnetadresse()">
+      <ion-icon color="medium" name="id-card-outline"></ion-icon>
+      <p>&nbsp;Carnet d'adresses</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" name="card-outline"></ion-icon>
+      <p>&nbsp;Méthode de paiement</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" name="cart-outline"></ion-icon>
+      <p>&nbsp;Mes commandes</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="btnReservation()">
+      <ion-icon  color="medium" name="calendar-outline"></ion-icon>
+
+      <p>&nbsp;Mes réservations</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="btnWallet()">
+
+      <ion-icon color="medium" name="wallet-outline"></ion-icon>
+      <p>&nbsp;Mon porte feuille</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="medium" name="notifications-outline"></ion-icon>
+      <p>&nbsp;Paramètres de l'appli</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="contact()">
+      <ion-icon color="medium"  name="location-outline"></ion-icon>
+      <p>&nbsp;Contact</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="btnAide()">
+      <ion-icon color="medium" name="chatbox-ellipses-outline"></ion-icon>
+      <p>&nbsp;Aide et assistance</p>
+      <ion-icon name="chevron-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button
+        mode="md"
+        expand="full"
+        fill="solid"
+        (click)="sortir()"
+        >
+     SE DECONNECTER
+      </ion-button>
+      </ion-card-subtitle>
+
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+
+
+
+

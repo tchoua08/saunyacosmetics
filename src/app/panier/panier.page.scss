@@ -1,0 +1,128 @@
+.icon{
+ margin-left:0px;
+}
+del{
+  font-weight:normal;
+  font-family: sans-serif;
+}
+ion-label{
+  color:#758589;
+  font-size:small;
+  font-family: sans-serif;
+}
+.articles{
+  margin-top: -10px;
+}
+p{
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+img{
+  padding:2px;
+  border-radius: 15px;
+}
+
+span{
+  color:#758589;
+  font-weight: bold;
+  font-size:small;
+  font-family: sans-serif;
+}
+h3{
+  color:#758589;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.mode_livraison{
+  position: absolute;
+  bottom: 0px;
+  width:100%;
+  text-align: center;
+
+}
+.text_livraison{
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif;
+  background-color: #2dd36f;
+  color:white;
+  height: 50px;
+  padding:17px;
+}
+
+.montant{
+  padding-left:40%;
+  color:#758589;
+  font-family: sans-serif;
+}
+b{
+  font-weight: bold;
+  font-size: 17px;
+}
+.recap{
+  color:#758589;
+  font-weight:bolder;
+  font-size:medium;
+  font-family: sans-serif;
+}
+
+ion-fab-button {
+  height: 70px;
+  width: 70px;
+}
+
+.cart-icon {
+  font-size: 50px;
+}
+
+.price{
+  color:gray;
+}
+
+.cart-length {
+  color: var(--ion-color-primary);
+  position: absolute;
+  top: 18px;
+  left: 25px;
+  font-weight: 600;
+  font-size: 1em;
+  min-width: 25px;
+  z-index: 10;
+}
+
+.ItemSpace {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+ion-grid > ion-item.item > div.item-inner > div.input-wrapper > ion-label {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+ion-label > ion-row > ion-col {
+  padding-top: 4px;
+  padding-right: 5px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+}
+
+img{
+  width: 350px;
+  height: 155px;
+
+}
+
+ion-row{
+  color:#758589;
+  font-size:medium;
+  font-family: sans-serif;
+  padding-bottom:10px;
+}
+section{width:10%;height:auto;display:flex;}

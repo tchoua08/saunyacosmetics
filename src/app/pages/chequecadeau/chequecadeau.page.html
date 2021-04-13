@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-title color="success">Chèque Cadeau</ion-title>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="perso">
+    Personnalisation
+
+  </div>
+  <ion-card class="ion-text-start" class="cardhaut">
+    <img [src]="url">
+    <div class="card-title">03/03/2021&nbsp;</div>
+    <div class="card-subtitle">&nbsp;{{montant}}FCFA</div>
+  </ion-card>
+  <ion-slides [options]="slideOptsTop">
+    <ion-slide>
+      <ion-card  class="ion-text-start" class="cardbas">
+        <img (click)="passeUrl('https://placem.at/people?overlay_color=eb7a85&w=600&h=290')" src="https://placem.at/people?overlay_color=eb7a85&w=600&h=290">
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card  class="ion-text-start" class="cardbas">
+        <img (click)="passeUrl('https://placem.at/places?overlay_color=3afbec&w=600&h=290')" src="https://placem.at/places?overlay_color=3afbec&w=600&h=290">
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="ion-text-start" class="cardbas">
+        <img  (click)="passeUrl('https://placem.at/things?overlay_color=bf27f9&w=600&h=290')" src="https://placem.at/things?overlay_color=bf27f9&w=600&h=290">
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="champ">
+
+     <ion-input  placeholder="&nbsp;Votre titre"  required>
+     </ion-input>
+
+     <ion-textarea rows="4" cols="20" placeholder="Votre message..."></ion-textarea>
+
+    <div class="adresse">
+      <ion-label class="valeur">
+        Valeur du chèque (FCFA)
+      </ion-label>
+      &nbsp;&nbsp;&nbsp;
+      <ion-input type="text" tabindex="20" placeholder="&nbsp;" [(ngModel)]="montant" required>
+      </ion-input>
+    </div>
+
+
+   </div>
+    <br/><br/><br/><br/>
+</ion-content>
+<ion-footer>
+  <div class="mode_livraison">
+
+    <div routerLink='/tabs/boutique/destinatairecheque/'class="text_livraison" >
+      Choisir un destinataire
+    </div>
+
+ </div>
+
+</ion-footer>

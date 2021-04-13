@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Liste de souhaits</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class=" category">
+
+  <!--List of items-->
+  <ion-list *ngIf='items.length>0' class="ion-no-margin list-products list" lines="full">
+    <ion-item class="product" *ngFor="let item of items; let i = index" (click)="viewItem(item.id)">
+      <ion-thumbnail slot="start">
+        <img src="{{ item.thumbnail_image }}">
+      </ion-thumbnail>
+      <!--item's information-->
+      <ion-label class="ion-text-wrap">
+        <div>{{ item.name }}</div>
+        <div>
+          <ion-text color="success" *ngIf="item.sale_price">{{ item.unit_price}} FCFA</ion-text>
+        </div>
+
+      </ion-label>
+      <div class="bottom-info text-lg" slot="end">
+        <ion-icon name="trash" color="danger" class="pull-right" (click)="remove(i)"></ion-icon>
+        <div class="clear"></div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

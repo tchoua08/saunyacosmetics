@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button color="success" (click)="navService.goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+      <ion-title color="success">Détails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+
+   <div *ngIf="produitsList!=null">
+
+    <ion-card class="card">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  produitsList.thumbnail_image)">
+    </ion-card>
+    <section color="primary" class="full-width">
+      <ion-button (click)="addGadie()" routerLink='/tabs/panier/' expand="full">
+        Ajouter au panier
+      </ion-button>
+    </section>
+    <ion-list>
+
+      <ion-item lines="none" >
+        <ion-label  text-wrap>
+          <h2>{{produitsList?.name}}</h2>
+          <p>{{produitsList?.heure}}</p>
+        </ion-label>
+        <div class="prix" text-wrap>
+          <br/>
+          {{produitsList?.unit_price}}&nbsp;FCFA
+          <br/>
+      </div>
+
+      </ion-item>
+  </ion-list>
+  <br/><br/>
+  <div [innerHTML]="produitsList?.description" class="description" text-wrap>
+  </div>
+   </div>
+
+  </ion-content>
+

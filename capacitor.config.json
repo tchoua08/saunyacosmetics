@@ -1,0 +1,17 @@
+{
+  "appId": "io.saunyacosmetics.app",
+  "appName": "Saunya cosmetics",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "windowsAndroidStudioPath": "C:\\android-studio\\bin\\studio64.exe",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "showSpinner": true,
+      "backgroundColor": "#ffffffff",
+      "spinnerColor": "#008000"
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Offrir</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <div class="entete">
+
+      <img style="margin:auto;" src="assets/icon/saunyacosmetics.png" alt="">
+      <div class="position" routerLink='/institut'>
+        <div class="aligner">Makepe, Douala</div>
+        <div>
+          <ion-icon class="aligner" name="chevron-down-outline">
+          </ion-icon>
+        </div>
+      </div>
+      <h1>Bienvenue, paul!</h1>
+      <h6>Sélectionner une catégorie ou une prestation</h6>
+
+  </div>
+
+  <div class="corps">
+    <ion-list>
+      <ion-list-header  color="primary">
+
+        <ion-label>Offrir</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let uneReservation of reservationsList">
+        <ion-thumbnail slot="start" routerLink='/tabs/boutique/offrirservicedetail/{{uneReservation.idCategorie}}/{{uneReservation.categorie}}'>
+          <img [src]="uneReservation.imageCategorie">
+        </ion-thumbnail>
+        <ion-label routerLink='/tabs/boutique/offrirservicedetail/{{uneReservation.idCategorie}}/{{uneReservation.categorie}}' text-wrap>
+          <h3>{{uneReservation.titre}}&nbsp;{{uneReservation.soustitre}}</h3>
+        </ion-label>
+        <span slot="start">{{uneReservation.heure}}</span>
+        <span slot="end">{{uneReservation.prix}}&nbsp;{{uneReservation.devise}}</span>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>
