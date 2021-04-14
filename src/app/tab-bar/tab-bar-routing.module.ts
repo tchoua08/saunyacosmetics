@@ -153,6 +153,14 @@ const routes: Routes = [
       loadChildren: () => import('../pages/addresselivraison/addresselivraison.module').then( m => m.AddresselivraisonPageModule)
     },
     {
+      path: 'panier/recapservice',
+      loadChildren: () => import('../boohoo/recapservice/recapservice.module').then( m => m.RecapservicePageModule)
+    },
+  {
+    path: 'panier/paiementservice',
+    loadChildren: () => import('../boohoo/paiementservice/paiementservice.module').then( m => m.PaiementservicePageModule)
+  },
+    {
       path: 'panier/placelivraison',
       loadChildren: () => import('../pages/placelivraison/placelivraison.module').then( m => m.PlacelivraisonPageModule)
     }
@@ -198,6 +206,11 @@ const routes: Routes = [
       {
         path: 'profil/phoneverify/:name/:call',
         loadChildren: () => import('../boohoo/phoneverify/phoneverify.module').then( m => m.PhoneverifyPageModule)
+      },
+
+      {
+        path: 'profil/validation/:numerotel',
+        loadChildren: () => import('../boohoo/validation/validation.module').then( m => m.ValidationPageModule)
       },
 
       {

@@ -20,10 +20,15 @@
 
   <ion-list>
     <ion-item *ngFor="let c of countries" (click)="go(c)">
-      <ion-avatar item-left >
+      <p slot="start" text-wrap>{{c.name}}</p>
+
+       <span> +{{c.callingCodes}}</span>
+      <ion-avatar  slot="end">
         <img src="{{c.flag}}">
       </ion-avatar>
-      <h2>{{c.name}}</h2>
+
+
+
     </ion-item>
   </ion-list>
 </ion-content>

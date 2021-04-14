@@ -1,14 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-toolbar>
       <ion-title color="success">Validation</ion-title>
       <ion-buttons slot="start">
         <ion-back-button color="success"
         defaultHref="/tabs/profil/country"></ion-back-button>
       </ion-buttons>
-    </ion-toolbar>
   </ion-toolbar>
+</ion-header>
 <ion-content>
+
   <ion-list>
 		<ion-item>
 			<ion-label>
@@ -18,19 +18,14 @@
 		</ion-item>
 
 		<ion-item>
-			<ion-label position="floating">
-        <ion-icon name="checkmark-outline"></ion-icon>
-        Téléphone
-			</ion-label>
-
-      <ion-input type="number"></ion-input>
+      <ion-input placeholder="Numéro de téléphone" type="number" [(ngModel)]="numberTel"></ion-input>
 		</ion-item>
 
   </ion-list>
-  <div text-center>
 
-    <ion-button size="large" color="medium">Validation</ion-button>
+   <br/>
+     <div   class="validation" >
+      <ion-button (click)="validation()" [disabled]="numberTel===''" size="large" color="success">Suivant</ion-button>
+      </div>
 
-
-  </div>
 </ion-content>

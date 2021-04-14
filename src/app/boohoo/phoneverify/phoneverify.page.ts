@@ -13,6 +13,7 @@ export class PhoneverifyPage implements OnInit {
 
   public name:string='';
   public call:string='';
+  public numberTel:string='';
 
   constructor(
     private navService:NavService,
@@ -24,6 +25,11 @@ export class PhoneverifyPage implements OnInit {
     this.name = this.route.snapshot.params.name;
     this.call = this.route.snapshot.params.call;
 
+  }
+
+  validation(){
+    this.app.sendSms(this.numberTel,this.numberTel,'55');
+    this.router.navigate(['/tabs/profil/validation/' +this.numberTel]);
   }
 
   ngOnInit() {

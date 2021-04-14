@@ -6,6 +6,8 @@ import { retry, catchError } from 'rxjs/operators';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +29,17 @@ export class AuthService {
       this.ngFireAuth.authState.subscribe(user => {
         if (user) {
           this.userData = user;
-          localStorage.setItem('user', JSON.stringify(this.userData));
-          JSON.parse(localStorage.getItem('user'));
+
+          Storage.set({
+            key: 'emailVerified',
+            value: ''+user.emailVerified
+          });
+
         } else {
-          localStorage.setItem('user', null);
-          JSON.parse(localStorage.getItem('user'));
+          Storage.set({
+            key: 'emailVerified',
+            value: ''
+          });
         }
       })
     }
@@ -52,6 +60,50 @@ export class AuthService {
 
 
     return this.http.post(this.urlAuth + '/signup', data, httpHeader);
+
+  }
+
+
+  loginFB(email:string, password:string):Promise<any> {
+
+    let interval=null;
+    return new Promise( (resolve, reject) => {
+
+      this.ngFireAuth.signInWithEmailAndPassword(email, password)
+        .then((user) => {
+
+
+          interval = setInterval(() => {
+            user.user.reload().then(
+              () => {
+                if (interval && user.user.emailVerified) {
+                  clearInterval(interval);
+                    interval=null;
+
+
+                    resolve("true");
+
+                }else{
+
+                  reject("false");
+
+                }
+              }
+            );
+          }, 900);
+
+
+        })
+
+
+        .catch((err:any)=>{
+          reject("false");
+        });
+
+
+
+
+    })
 
   }
 
@@ -141,7 +193,9 @@ export class AuthService {
   }
 
     // Returns true when user's email is verified
+    //emailVerified
     get isEmailVerified(): boolean {
+
       const user = JSON.parse(localStorage.getItem('user'));
       return (user.emailVerified !== false) ? true : false;
     }

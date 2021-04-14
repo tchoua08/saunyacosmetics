@@ -1,0 +1,122 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="success" defaultHref="/tabs/panier/recapservice"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button color="success">
+        <ion-label>Confirmation</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+
+</ion-header>
+<ion-content padding>
+  <div class="div-main-header">
+    <div class="div-number1">
+      <div class="div-cicle1">
+        <img class="imge" src="../../../assets/image/1.png" alt="">
+      </div>
+      <label class="label-div-cicle1" for="">Paiement</label>
+    </div>
+    <div class="div-line1">
+      <img src="../../../assets/image/separation.png">
+    </div>
+
+
+    <div class="div-number3">
+      <div class="div-cicle1">
+        <img class="imge" src="../../assets/image/3.png" alt="">
+      </div>
+      <label class="label-div-cicle1" for="">
+
+       Confirmation
+
+      </label>
+    </div>
+
+  </div>
+
+  <div>
+
+      <ion-list>
+        <ion-list-header>
+          PANIER ({{imageItems?.length}} ARTICLES)
+        </ion-list-header>
+      <ion-item>
+        <ion-button [routerLink]="['/tabs/panier']"  slot="end" expand="full" color="medium">Modifier</ion-button>
+        <ion-icon (click)="btnAction('ouvert')" *ngIf="action==='fermer'" slot="end" name="chevron-down-outline"></ion-icon>
+        <ion-icon (click)="btnAction('fermer')" *ngIf="action==='ouvert'" slot="end" name="chevron-up-outline"></ion-icon>
+      </ion-item>
+      <ion-slides *ngIf="action==='ouvert'" [options]="slideOptsTop">
+        <ion-slide *ngFor="let element of imageItems">
+          <ion-card  class="ion-text-start" class="cardbas">
+            <img class="imgshow" [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+element.image)"/>
+            <ion-card-content>
+              {{element.name }}...
+             </ion-card-content>
+          </ion-card>
+
+        </ion-slide>
+      </ion-slides>
+
+        <ion-item>
+
+            <p slot="start">Sous-total</p>
+            <p slot="end" color="success">
+              <b>{{sommeub}}FCFA</b>
+            </p>
+
+        </ion-item>
+
+
+
+        <ion-item>
+          <p>
+            <b>Total de la commande</b>: *Taxes comprises
+          </p>
+          <p slot="end" color="success">
+            <b>{{sommeub}}FCFA</b>
+          </p>
+       </ion-item>
+      </ion-list>
+
+
+      <ion-list lines="none">
+        <ion-list-header>
+       OPTION DE PAIEMENT
+        </ion-list-header>
+
+          <ion-radio-group allow-empty-selection="true" >
+          <ion-item>
+            <ion-label class="btnradio">OM<br/>
+              <ion-text>payer pas Orange money</ion-text>
+            </ion-label>
+
+            <ion-radio slot="start" checked  value="orange"></ion-radio>
+
+          </ion-item>
+
+          <ion-item>
+         <ion-label  class="btnradio" text-wrap>MOMO<br/><ion-text>Payer pas MTN Money</ion-text></ion-label>
+            <ion-radio slot="start"   value="mtn"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label  class="btnradio" text-wrap>Paiement électronique<br/><ion-text>Visa ou Master card</ion-text></ion-label>
+               <ion-radio slot="start"   value="card"></ion-radio>
+             </ion-item>
+        </ion-radio-group>
+
+
+
+        </ion-list>
+
+      <ion-button  expand="full" color="success">PAYER MAINTENANT</ion-button>
+  </div>
+
+
+</ion-content>

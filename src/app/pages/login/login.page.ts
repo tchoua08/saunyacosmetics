@@ -51,69 +51,71 @@ export class LoginPage{
         this.messageEnreg('Adresse email inccorect');
       }  else {
     this.start = 'oui';
-    this.authService.SignIn(this.userEmail, this.userPassword)
+    this.authService.loginFB(this.userEmail, this.userPassword)
     .then((res) => {
-      if(this.authService.isEmailVerified) {
+
+      if(res==='true'){
+
+
+          this.authService.login(this.userEmail, this.userPassword).subscribe(
+            (data: any) => {
+
+              const user: User = {
+                id: data.user.id,
+                name: data.user.name,
+                type: data.user.type,
+                email: data.user.email,
+                avatar: data.user.avatar,
+                avatar_original: data.user.avatar_original,
+                address: data.user.name.address,
+                city: data.user.name.city,
+                country: data.user.country,
+                postal_code: data.user.postal_code,
+                phone: data.user.phone
+
+             };
+              this.store.dispatch(new AddUser(user));
+              this.messageEnreg('connexion avec succès');
+              this.start = 'non';
+              const userid =data.user.id+'';
+              Storage.set({
+                key: 'connexion',
+                value: 'true'
+              });
+              Storage.set({
+                key: 'userid',
+                value: userid
+              });
+
+              Storage.set({
+                key: 'validation',
+                value: 'true'
+              });
+              this._router.navigateByUrl('', { replaceUrl: true });
 
 
 
-    this.authService.login(this.userEmail, this.userPassword).subscribe(
-      (data: any) => {
+            },
+            (err) => {
+              this.start = 'non';
+              Storage.set({
+                key: 'connexion',
+                value: 'false'
+              });
+              console.log("err:"+JSON.stringify(err));
+              this.messageEnreg('Erreur de connexion');
 
-        const user: User = {
-          id: data.user.id,
-          name: data.user.name,
-          type: data.user.type,
-          email: data.user.email,
-          avatar: data.user.avatar,
-          avatar_original: data.user.avatar_original,
-          address: data.user.name.address,
-          city: data.user.name.city,
-          country: data.user.country,
-          postal_code: data.user.postal_code,
-          phone: data.user.phone
-
-       };
-        this.store.dispatch(new AddUser(user));
-        this.messageEnreg('connexion avec succès');
-        this.start = 'non';
-        const userid =data.user.id+'';
-        Storage.set({
-          key: 'connexion',
-          value: 'true'
-        });
-        Storage.set({
-          key: 'userid',
-          value: userid
-        });
-
-        Storage.set({
-          key: 'validation',
-          value: 'true'
-        });
-        this._router.navigateByUrl('', { replaceUrl: true });
+            }
+          );
 
 
-
-      },
-      (err) => {
-        this.start = 'non';
-        Storage.set({
-          key: 'connexion',
-          value: 'false'
-        });
-        console.log("err:"+JSON.stringify(err));
-        this.messageEnreg('Erreur de connexion');
-
-      }
-    );
+            } else {
+              this.start = 'non';
+              this.messageEnreg('Adresse email non validée');
+              return false;
+            }
 
 
-      } else {
-        this.start = 'non';
-        this.messageEnreg('Adresse email non validée');
-        return false;
-      }
     }).catch((error) => {
       this.start = 'non';
       this.messageEnreg('L\'utilisateur n\'est pas encore enregistré ou email ou mot de passe incorrect');

@@ -13,10 +13,10 @@ import {Gadie} from '../app/store/models/gadie.model';
 
 import {User} from '../app/store/models/user.model';
 import { catchError } from 'rxjs/internal/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient,HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,9 @@ export class AppService {
 
   private apiUrl = 'https://restcountries.eu/rest/v2/all?fields=flag;alpha2Code;callingCodes;name;capital;currencies';
   //private apiUrl = 'https://restcountries.eu/rest/v2/';
+  public text: string;
+  public from: string;
+  public to: string;
 
   reservations = [
     {
@@ -199,7 +202,7 @@ cartefidelites = [
 
    urlWishList ='https://dev.saunya.com/api/v2/wishlists/check-product';
 
-   constructor(private http: HttpClient){}
+   constructor(private alert: AlertController,private http: HttpClient){}
 
   getReservations(){
     return this.reservations;
@@ -377,7 +380,24 @@ updateUser(payload: User, id: number) {
   }
 
 
+  public sendSms(from:string, to:string,text:string) {
+    const payload = new HttpParams()
+      .set('from', from)
+      .set('to', to)
+      .set('text', text);
 
+    return this.http.post('http://sms.com:3000/send-sms', payload)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.alert.create({ message: 'Oops!'})
+            .then((alert) => alert.present());
+          return throwError('Oops!');
+        }))
+      .subscribe(async (resp: any) => {
+        const alert = await this.alert.create({ message: resp.message });
+        await alert.present();
+      });
+  }
 
 
 

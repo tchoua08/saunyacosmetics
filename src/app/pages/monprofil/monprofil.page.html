@@ -8,7 +8,15 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
+  
+<ion-list  *ngIf="isVerifyPhone!='true'">
+  <ion-item (click)="btnConfPhone()">
+    <ion-icon color="medium" name="repeat-outline"></ion-icon>
+   
+    <p>&nbsp;Confirmer votre numéro de téléphone</p>
+    <ion-icon color="medium" name="chevron-forward" color="medium" slot="end"></ion-icon>
+  </ion-item>
+  </ion-list>
     <!--- <ion-grid>
       <ion-row>
         <ion-col size="3" class="person">

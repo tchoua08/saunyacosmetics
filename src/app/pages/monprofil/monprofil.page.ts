@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
-
+import { AlertController } from '@ionic/angular';
 import {User} from '../../../app/store/models/user.model';
 import {UserState} from '../../../app/user.state';
 import {AddUser, DeleteUser, GetUsers, SetSelectedUser} from '../../../app/store/actions/user.action';
@@ -18,7 +18,14 @@ import { AuthService } from '../../auth.service';
 export class MonprofilPage implements OnInit {
   @Select(UserState.getUserList) users!: Observable<User[]>;
   item: any;
-  constructor(private authService: AuthService, private store: Store, private route: Router) { }
+  isVerifyPhone:string='';
+  constructor(public alertController: AlertController,private authService: AuthService, private store: Store, private route: Router) {
+
+    this.isVerify().then(res=>{
+      this.isVerifyPhone =res.value;
+    })
+
+  }
 
   async ngOnInit() {
     this.store.dispatch(new GetUsers());
@@ -30,23 +37,48 @@ export class MonprofilPage implements OnInit {
   }
 
   btnModProfil(){
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/modifierprofil', { replaceUrl: true });
 
   }
 
+  async isVerify(){
+
+    return await Storage.get({ key: 'verifyphone' })
+
+   }
+
   carnetadresse(){
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/carnetadresse', { replaceUrl: true });
   }
 
   btnModPwd(){
-
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/modifiermodpasse', { replaceUrl: true });
 
   }
 
 
-  contact(){
+  btnConfPhone(){
+    this.route.navigateByUrl('/tabs/profil/country', { replaceUrl: true });
+  }
 
+
+  contact(){
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/contact', { replaceUrl: true });
 
   }
@@ -74,17 +106,39 @@ export class MonprofilPage implements OnInit {
   }
 
   btnAide(){
-
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/assistance', { replaceUrl: true });
 
   }
   btnReservation(){
-
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
+    
     this.route.navigateByUrl('/tabs/profil/myappointment', { replaceUrl: true });
   }
 
   btnWallet(){
+    if (this.isVerifyPhone!='true'){
+      this.messageEnreg("Merci de confirmer votre numéro de téléphone");
+      return;
+    }
     this.route.navigateByUrl('/tabs/profil/mywallet', { replaceUrl: true });
+  }
+
+
+  async messageEnreg(msg: string){
+
+    const alert = await this.alertController.create({
+      message: msg,
+      buttons: ['OK']
+    });
+    await alert.present();
+     
   }
 
 

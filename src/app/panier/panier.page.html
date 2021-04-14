@@ -1,5 +1,7 @@
 <ion-header [translucent]="true">
 
+
+
   <ion-toolbar >
     <ion-buttons slot="start">
       <ion-button color="success">
@@ -10,6 +12,22 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-row *ngIf="somme+sommeub===0">
+    <ion-col>
+
+        <img class="empty" src="assets/image/empty.png"/>
+
+    </ion-col>
+    <ion-col>
+
+
+        <h3>Le panier est vide</h3>
+
+
+    </ion-col>
+  </ion-row>
+
+
  <!-- <ion-button (click)="toggleInfiniteScroll()" expand="block">
   </ion-button>
   <ion-list lines="none">
@@ -35,10 +53,10 @@
     <ion-list>
       <ion-item *ngFor="let commande of itemsFilter">
         <ion-row justify-content-between>
-          <ion-col >
+          <ion-col class="test">
             <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.produit.thumbnail_image)">
           </ion-col>
-          <ion-col>
+          <ion-col  >
             <ion-row text-wrap>
               {{commande.produit.name}}
             </ion-row>
@@ -118,10 +136,10 @@
   <ion-list>
     <ion-item *ngFor="let commande of bookings | async">
       <ion-row justify-content-between>
-        <ion-col>
+        <ion-col class="test" >
           <img [src]="sanitizer.bypassSecurityTrustResourceUrl(imageUrl+  commande.prestation.thumbnail_image)">
         </ion-col>
-        <ion-col>
+        <ion-col  >
           <ion-row text-wrap>
              {{commande.prestation.name}}
           </ion-row>
@@ -176,37 +194,48 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="voirPanier==='non'">
 
-   <div *ngIf="voirPanier==='non'">
+   <div *ngIf="somme+sommeub!=0" >
 
    <ion-list lines="no">
-     <ion-item>
+     <ion-item *ngIf="somme===0">
         <p class="price">
-          <b>Total commande</b>(hors livraison): *Taxes comprises
+          <b>Total commande</b>: *Taxes comprises
         </p>
         <p slot="end" class="price">
           <b>{{somme+sommeub}}FCFA</b>
         </p>
      </ion-item>
+     <ion-item *ngIf="somme !=0">
+      <p class="price">
+        <b>Total commande</b>(hors livraison): *Taxes comprises
+      </p>
+      <p slot="end" class="price">
+        <b>{{somme+sommeub}}FCFA</b>
+      </p>
+   </ion-item>
    </ion-list>
 
 
-    <ion-grid>
+    <ion-grid *ngIf="somme!=0">
       <ion-row class="item-stats">
-        <ion-col (click)="btnOpenLivraison()" class="ion-text-center">
-          <ion-button expand="block" color="medium" >
+        <ion-col >
+          <ion-button  (click)="btnOpenLivraison()" expand="full" color="medium" >
             LIVRAISONS
           </ion-button>
         </ion-col>
-        <ion-col  (click)="btnOpenPaiement()" class="ion-text-center">
-          <ion-button expand="block" color="success" >
+        <ion-col   >
+          <ion-button (click)="btnOpenPaiement()" expand="full" color="success" >
             PAIEMENT
           </ion-button>
         </ion-col>
 
       </ion-row>
     </ion-grid>
+    <ion-button *ngIf="somme===0" (click)="btnOpenPaiement()" expand="full" color="success" >
+      PAIEMENT
+    </ion-button>
 
    </div>
 

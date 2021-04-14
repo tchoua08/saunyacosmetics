@@ -23,6 +23,8 @@ import {AddProduit, DeleteProduit, GetProduits, SetSelectedProduit} from '../../
 import { TablivraisonPage } from '../pages/tablivraison/tablivraison.page';
 import { Router } from '@angular/router';
 import { NavService } from '../nav.service';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 
 @Component({
@@ -232,7 +234,28 @@ export class PanierPage implements OnInit {
   }
 
    btnOpenPaiement(){
-    this.router.navigate(['/tabs/panier/paiement'])
+     this.isConnect().then(res=>{
+
+      if (res.value==='true'){
+        if (this.somme===0){
+          this.router.navigate(['/tabs/panier/recapservice'])
+        }
+        if (this.somme!=0){
+          this.router.navigate(['/tabs/panier/paiement'])
+        }
+
+       }else{
+        this.router.navigate(['/tabs/profil/connexion'])
+       }
+     })
+
+
+  }
+
+  async isConnect(){
+
+   return await Storage.get({ key: 'connexion' })
+
   }
 
   btnOpenBooking(){

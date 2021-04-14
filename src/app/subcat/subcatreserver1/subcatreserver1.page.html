@@ -75,7 +75,7 @@
 
     <div class="container-view" *ngIf="reservationsList.length>0" [hidden]="(viewType === '2')||(viewType === '3')">
       <ion-list-header>
-        <ion-label class="titre"> Les Produits</ion-label>
+        <ion-label class="titre"> Les Services</ion-label>
       </ion-list-header>
       <ion-card class="card-custom" *ngFor="let unproduit of reservationsList">
         <div  (click)="goPrestation(unproduit)"  class="card-thumbnail" [style.backgroundImage]="'url(' +imageUrl+unproduit.thumbnail_image + ')'">
